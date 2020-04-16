@@ -45,9 +45,9 @@ Melodic variation techniques, as implemented here, expect an array of MIDI::Simp
 
 =cut
 
-sub note_name_to_number($) {
+sub note_name_to_number {
+    my ($note_number, $in) = (-1, @_);
 
-    my ( $note_number, $in, @ret ) = ( -1, $_[0] );
     return () unless length $in;
 
     if ( $in =~ /^([A-Za-z]+)(\d+)/s ) {    # E.g.,  "C3", "As4"
