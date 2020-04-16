@@ -436,13 +436,14 @@ sub diminution {
 
     return () unless length $dur_or_len[0];
 
-    my $inc = 0;
     my @ret = ();
+    my $inc = 0;
     for (@dur_or_len) {
         my $elem = "d";
 
         $elem .= rdiminution(2, $dur_or_len[$inc]);
         push @ret, $elem;
+
         $inc++;
     }
 
