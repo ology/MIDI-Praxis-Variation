@@ -198,8 +198,8 @@ sub transposition {
  Returns   : MIDI note numbers equivalent by inversion to
            : an array of note names.
 
- Arguments : $axis  -  a note to use as the axis of this inversion.
-           : @array -  an array of note names.
+ Arguments : $axis  - A note to use as the axis of this inversion.
+           : @array - An array of note names.
 
  Comments  : Expects to see a MIDI::Simple style note name.
            : followed by an array of such names. These give
@@ -208,7 +208,7 @@ sub transposition {
 =cut
 
 sub inversion {
-    my ($axis, @notes) = @_; # A note name followed by an array of note names
+    my ($axis, @notes) = @_;
 
     return () unless length $axis;
     return () unless length $notes[0];
