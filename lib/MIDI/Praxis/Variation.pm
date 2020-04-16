@@ -248,7 +248,7 @@ sub retrograde_inversion {
 =cut
 
 sub dur {
-    my ($tempo, $arg) = (MIDI::Simple::Tempo, @_); 
+    my ($tempo, $arg) = (MIDI::Simple::Tempo, @_);
 
     return () unless $arg;
 
