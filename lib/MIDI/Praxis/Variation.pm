@@ -104,10 +104,8 @@ sub original {
 
     return () unless length $notes[0];
 
-    my $inc = 0;
-    for (@notes) {
-        push @ret, note_name_to_number( $notes[$inc] );
-        $inc++;
+    for my $note (@notes) {
+        push @ret, note_name_to_number($note);
     }
 
     return @ret;
