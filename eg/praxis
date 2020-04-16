@@ -2,18 +2,7 @@
 use strict;
 use warnings;
 
-use MIDI::Praxis::Variation qw(
-    transposition
-    inversion
-    retrograde_inversion
-    dur
-    tye
-    raugmentation
-    rdiminution
-    augmentation
-    diminution
-    ntup
-);
+use MIDI::Praxis::Variation ':all';
 
 my @z = qw( C5 D5 E5 F5 G5 A5 B5 );
 my @y = qw( C5 E5 G5 );

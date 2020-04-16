@@ -5,21 +5,7 @@ use warnings;
 use Test::More;
 
 BEGIN {
-    use_ok 'MIDI::Praxis::Variation', qw(
-        augmentation
-        diminution
-        dur
-        inversion
-        note_name_to_number
-        ntup
-        original
-        raugmentation
-        rdiminution
-        retrograde
-        retrograde_inversion
-        transposition
-        tye
-    );
+    use_ok 'MIDI::Praxis::Variation', ':all';
 }
 
 my @notes = qw(C5 E5 G5);
@@ -90,6 +76,9 @@ is_deeply \@got, $expect, 'ntup';
 @got = ntup(2, @notes);
 $expect = [qw(C5 E5 E5 G5)];
 is_deeply \@got, $expect, 'ntup';
+
+@got = ntup(3, @notes);
+is_deeply \@got, \@notes, 'ntup';
 
 @got = original();
 $expect = [];
