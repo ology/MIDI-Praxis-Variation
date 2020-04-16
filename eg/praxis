@@ -1,0 +1,34 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use MIDI::Praxis::Variation qw(
+    transposition
+    inversion
+    retrograde_inversion
+    dur
+    tye
+    raugmentation
+    rdiminution
+    augmentation
+    diminution
+    ntup
+);
+
+my @z = qw( C5 D5 E5 F5 G5 A5 B5 );
+my @y = qw( C5 E5 G5 );
+
+my @x =
+#    transposition(12, @y)
+#    inversion('B4', @y)
+#    retrograde_inversion('B4', @y)
+#    dur('qn') # Return the duration as an integer
+    tye('qn', 'qn') # Return the sum of the durations
+#    raugmentation(1.5, 'qn') # Multiply by factor
+#    rdiminution(2, 'qn') # Divide by factor
+#    augmentation('qn') # Multiply by 2
+#    diminution('qn') # Divide by 2
+#    ntup(3, @z) # Expand the array by 3-tuples
+;
+
+use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," MARK: ",Dumper\@x);
