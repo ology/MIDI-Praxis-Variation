@@ -69,6 +69,8 @@ Melodic variation techniques, as implemented here, expect an array of
 MIDI::Simple style note names or durations as input. They return an
 array of MIDI note numbers or duration values.
 
+=head1 FUNCTIONS
+
 =head2 note_name_to_number
 
  Usage     : note_name_to_number($note_name)
