@@ -312,7 +312,7 @@ sub tye {
 =cut
 
 sub raugmentation {
-    my ($ratio, $dur_or_len) = @_; 
+    my ($ratio, $dur_or_len) = @_;
 
     return () unless $ratio && 1 < $ratio;
     return () unless $dur_or_len && length $dur_or_len;
