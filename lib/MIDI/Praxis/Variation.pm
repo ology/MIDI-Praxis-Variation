@@ -11,7 +11,7 @@ our $VERSION = '0.0500';
 
 BEGIN {
 	use Exporter ();
-	use vars qw (@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+	use vars qw (@ISA @EXPORT @EXPORT_OK);
 	@ISA       = qw (Exporter);
 	@EXPORT    = qw ();
  	@EXPORT_OK = qw (
