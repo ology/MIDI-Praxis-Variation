@@ -5,31 +5,27 @@ package MIDI::Praxis::Variation;
 use strict;
 use warnings;
 
-use MIDI::Simple;
-
 our $VERSION = '0.0500';
 
-BEGIN {
-    use Exporter ();
-    use vars qw (@ISA @EXPORT @EXPORT_OK);
-    @ISA       = qw (Exporter);
-    @EXPORT    = qw ();
-    @EXPORT_OK = qw (
-        augmentation
-        diminution
-        dur
-        inversion
-        note_name_to_number
-        ntup
-        original
-        raugmentation
-        rdiminution
-        retrograde
-        retrograde_inversion
-        transposition
-        tye
-    );
-}
+use MIDI::Simple;
+
+use Exporter 'import';
+
+our @EXPORT = qw(
+    augmentation
+    diminution
+    dur
+    inversion
+    note_name_to_number
+    ntup
+    original
+    raugmentation
+    rdiminution
+    retrograde
+    retrograde_inversion
+    transposition
+    tye
+);
 
 =head1 SYNOPSIS
 
