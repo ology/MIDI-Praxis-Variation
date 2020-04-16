@@ -466,7 +466,7 @@ sub ntup {
 
     return () unless $nelem && @tmpar;
 
-    unless ( @tmpar < $nelem ) {
+    if (@tmpar >= $nelem) {
         for ($index = 0; $index <= $#tmpar - $nelem + 1; $index++) {
             push @ret, @tmpar[$index .. $index + $nelem - 1];
         }
