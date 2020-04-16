@@ -159,9 +159,9 @@ sub retrograde {
 sub transposition {
     my ($delta, @notes) = @_;
 
-    my @ret = ();
-
     return () unless length $notes[0];
+
+    my @ret = ();
 
     if ($notes[0] =~ /[A-G]/) {
         @ret = original(@notes);
@@ -170,11 +170,8 @@ sub transposition {
         @ret = @notes;
     }
 
-    my $inc = 0;
-
-    for ( @notes ) {
-        $ret[$inc] += $delta;
-        $inc++;
+    for (@ret) {
+        $_ += $delta;
     }
 
     return @ret;
