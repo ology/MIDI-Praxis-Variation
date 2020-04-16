@@ -37,20 +37,21 @@ our @EXPORT = qw(
   );
 
   my @notes = qw(C5 E5 G5);
+  my @dura = qw(qn qn);
 
-  my @x = augmentation('qn', 'qn');
-  @x = diminution('qn', 'qn');
+  my @x = augmentation(@dura);
+  @x = diminution(@dura);
   my $x = dur('qn');
   @x = inversion('B4', @notes);
   $x = note_name_to_number('C5');
   @x = ntup(2, @notes);
   @x = original(@notes);
-  $x = raugmentation(1.5, 'qn');
-  $x = rdiminution(1.5, 'qn');
+  $x = raugmentation(1.5, @dura);
+  $x = rdiminution(1.5, @dura);
   @x = retrograde(@notes);
   @x = retrograde_inversion('B4', @notes);
   @x = transposition(@notes);
-  $x = tye('qn', 'qn');
+  $x = tye(@dura);
 
 =head1 DESCRIPTION
 
