@@ -441,8 +441,8 @@ sub diminution {
  Purpose   : Catalog tuples of length $nelem in @subject.
  Returns   : An array of tuples of length $nelem.
 
- Argument  : $nelem      - number of elements in each tuple
-           : @subject    - subject array to be scanned for tuples
+ Argument  : $nelem   - Number of elements in each tuple
+           : @subject - Subject array to be scanned for tuples
 
  Comments  : Scan begins with the 0th element of @subject looking for
            : a tuple of length $nelem. Scan advances by one until it
