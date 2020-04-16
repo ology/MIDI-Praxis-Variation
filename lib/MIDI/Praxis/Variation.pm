@@ -131,7 +131,7 @@ sub retrograde {
            : example, 8 indicates 8 semitones up while -7 asks
            : for 7 semitones down. The array argument specifies
            : the notes to be transposed.
-                     
+
 =cut
 
 sub transposition {
@@ -167,7 +167,7 @@ sub transposition {
  Comments  : Expects to see a MIDI::Simple style note name.
            : followed by an array of such names. These give
            : the axis of inversion and the notes to be inverted.
-                     
+
 =cut
 
 sub inversion {
@@ -280,9 +280,9 @@ sub dur {
 
 sub tye {
     my @dur_or_len = @_;
-                                                                                                    
+
     return () unless length $dur_or_len[0];
-                                                                                                        
+
     my $sum = 0;
     my $inc = 0;
 
@@ -345,7 +345,7 @@ sub rdiminution {
     return () unless $dur_or_len && length $dur_or_len;
 
     my $ret =  sprintf( "%.0f", (dur($dur_or_len) / $ratio));
-    
+
     return $ret;
 }
 
@@ -370,7 +370,7 @@ sub augmentation {
     my @dur_or_len = @_;
 
     return () unless length $dur_or_len[0];
-    
+
     my $inc = 0;
     my @ret = ();
     for (@dur_or_len) {
@@ -406,7 +406,7 @@ sub diminution {
     my @dur_or_len = @_;
 
     return () unless length $dur_or_len[0];
-    
+
     my $inc = 0;
     my @ret = ();
     for (@dur_or_len) {
