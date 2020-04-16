@@ -113,13 +113,9 @@ sub note_name_to_number {
 sub original {
     my @notes =  @_;
 
-    my @ret = ();
-
     return () unless @notes;
 
-    for my $note (@notes) {
-        push @ret, note_name_to_number($note);
-    }
+    my @ret = map { note_name_to_number($_) } @notes;
 
     return @ret;
 }
