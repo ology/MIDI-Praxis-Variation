@@ -73,12 +73,13 @@ array of MIDI note numbers or duration values.
 
 =head2 note_name_to_number
 
- Usage     : note_name_to_number($note_name)
- Purpose   : Map a single note name to a MIDI note number.
- Returns   : An equivalent MIDI note number or -1 if not
-           : known.
+Usage: note_name_to_number($note_name)
 
- Comments  : Expects to see a MIDI::Simple style note name.
+Purpose: Map a single note name to a MIDI note number.
+
+Returns: An equivalent MIDI note number or -1 if not known.
+
+Comments: Expects to see a MIDI::Simple style note name.
 
 =cut
 
@@ -100,15 +101,19 @@ sub note_name_to_number {
 
 =head2 original
 
- Usage     : original(@array)
- Purpose   : Map note names to MIDI note numbers.
- Returns   : An equivalent array of MIDI note numbers.
+Usage: original(@array)
 
- Argument  : @array - An array of note names.
+Purpose: Map note names to MIDI note numbers.
 
- Comments  : Expects to see a an array of MIDI::Simple style note names,
-           : e.g.,  C5, Fs6, Bf3. It returns equivilent MIDI note
-           : numbers leaving the array of note names untouched.
+Returns: An equivalent array of MIDI note numbers.
+
+Argument:
+
+  @array - An array of note names.
+
+Comments: Expects to see a an array of MIDI::Simple style note names
+e.g. C5, Fs6, Bf3. It returns equivilent MIDI note numbers leaving the
+array of note names untouched.
 
 =cut
 
@@ -125,13 +130,17 @@ sub original {
 
 =head2 retrograde
 
- Usage     : retrograde(@array)
- Purpose   : Form the retrograde of an array of note names.
- Returns   : The retrograde equivalent array as MIDI note numbers.
+Usage: retrograde(@array)
 
- Argument  : @array - An array of note names.
+Purpose: Form the retrograde of an array of note names.
 
- Comments  : Expects to see a an array of MIDI::Simple style note names.
+Returns: The retrograde equivalent array as MIDI note numbers.
+
+Argument:
+
+  @array - An array of note names.
+
+Comments: Expects to see a an array of MIDI::Simple style note names.
 
 =cut
 
@@ -150,20 +159,23 @@ sub retrograde {
 
 =head2 transposition
 
- Usage     : transposition($distance, @array)
- Purpose   : Form the transposition of an array of notes.
- Returns   : MIDI note numbers equivalent by transposition from
-           : an array of note names OR MIDI note numbers.
+Usage: transposition($distance, @array)
 
- Arguments : $distance - An integer giving distance and direction.
-           : @array    - An array of note names OR MIDI note numbers.
+Purpose: Form the transposition of an array of notes.
 
- Comments  : Expects to see an integer followed an array of
-           : MIDI::Simple style note names OR MIDI note numbers.
-           : The integer specifies the direction and distance of
-           : transposition. For example, 8 indicates 8 semitones
-           : up while -7 asks for 7 semitones down. The array
-           : argument specifies the notes to be transposed.
+Returns: MIDI note numbers equivalent by transposition from an array
+of note names OR MIDI note numbers.
+
+Arguments:
+
+  $distance - An integer giving distance and direction.
+  @array    - An array of note names OR MIDI note numbers.
+
+Comments: Expects to see an integer followed an array of MIDI::Simple
+style note names OR MIDI note numbers.  The integer specifies the
+direction and distance of transposition. For example, 8 indicates 8
+semitones up while -7 asks for 7 semitones down. The array argument
+specifies the notes to be transposed.
 
 =cut
 
@@ -191,17 +203,21 @@ sub transposition {
 
 =head2 inversion
 
- Usage     : inversion($axis, @array)
- Purpose   : Form the inversion of an array of notes.
- Returns   : MIDI note numbers equivalent by inversion to
-           : an array of note names.
+Usage: inversion($axis, @array)
 
- Arguments : $axis  - A note to use as the axis of this inversion.
-           : @array - An array of note names.
+Purpose: Form the inversion of an array of notes.
 
- Comments  : Expects to see a MIDI::Simple style note name.
-           : followed by an array of such names. These give
-           : the axis of inversion and the notes to be inverted.
+Returns: MIDI note numbers equivalent by inversion to an array of note
+names.
+
+Arguments:
+
+  $axis  - A note to use as the axis of this inversion.
+  @array - An array of note names.
+
+Comments: Expects to see a MIDI::Simple style note name.  followed by
+an array of such names. These give the axis of inversion and the notes
+to be inverted.
 
 =cut
 
@@ -224,15 +240,17 @@ sub inversion {
 
 =head2 retrograde_inversion
 
- Usage     : retrograde_inversion($axis, @array)
- Purpose   : Form the retrograde inversion of an array of notes.
- Returns   : MIDI note numbers equivalent by retrograde inversion to
-           : an array of note names.
+Usage: retrograde_inversion($axis, @array)
+Purpose: Form the retrograde inversion of an array of notes.
+Returns: MIDI note numbers equivalent by retrograde inversion to an
+array of note names.
 
- Argument  : @array - An array of note names.
+Argument:
 
- Comments  : Expects to see a an array of MIDI::Simple style note names.
-           : Inverts about the supplied $axis.
+  @array - An array of note names.
+
+Comments: Expects to see a an array of MIDI::Simple style note names.
+Inverts about the supplied $axis.
 
 =cut
 
@@ -254,16 +272,20 @@ sub retrograde_inversion {
 
 =head2 dur
 
- Usage     : dur($dur_or_len)
- Purpose   : Compute duration of a note.
- Returns   : Duration as an integer.
+Usage: dur($dur_or_len)
 
- Argument  : $dur_or_len - A string consisting of a numeric MIDI::Simple
-           : style numeric duration spec ( e.g., d48, or d60 ) or length
-           : spec ( e.g., qn or dhn )
+Purpose: Compute duration of a note.
 
- Comments  : Note that string input is expected and integer output
-           : is returned.
+Returns: Duration as an integer.
+
+Argument:
+
+  $dur_or_len - A string consisting of a numeric MIDI::Simple style
+  numeric duration spec (e.g. d48, or d60) or length spec (e.g. qn or
+  dhn)
+
+Comments: Note that string input is expected and integer output is
+returned.
 
 =cut
 
@@ -287,19 +309,22 @@ sub dur {
 
 =head2 tye
 
- Usage     : tye($dur_or_len)
- Purpose   : Compute the sum of the durations of notes. As with a tie
-           : in music notation. This odd spelling is used to avoid
-           : conflict with the perl reserved word tie.
+Usage: tye($dur_or_len)
 
- Returns   : Duration as an integer.
+Purpose: Compute the sum of the durations of notes. As with a tie in
+music notation. This odd spelling is used to avoid conflict with the
+perl reserved word tie.
 
- Argument  : $dur_or_len - A string consisting of a numeric MIDI::Simple
-           : style numeric duration spec ( e.g., d48, or d60 ) or length
-           : spec ( e.g., qn or dhn )
+Returns: Duration as an integer.
 
- Comments  : Note that string input is expected and integer output
-           : is returned.
+Argument:
+
+  $dur_or_len - A string consisting of a numeric MIDI::Simple style
+  numeric duration spec (e.g. d48, or d60) or length spec (e.g. qn or
+  dhn)
+
+Comments: Note that string input is expected and integer output is
+returned.
 
 =cut
 
@@ -320,17 +345,20 @@ sub tye {
 
 =head2 raugmentation
 
- Usage     : raugmentation($ratio, $dur_or_len)
- Purpose   : Augment duration of a note multiplying it by $ratio.
- Returns   : Duration as an integer.
+Usage: raugmentation($ratio, $dur_or_len)
 
- Argument  : $ratio      - An integer multiplier
-           : $dur_or_len - A string consisting of a numeric MIDI::Simple
-           : style numeric duration spec ( e.g., d48, or d60 ) or length
-           : spec ( e.g., qn or dhn )
+Purpose: Augment duration of a note multiplying it by $ratio.
 
- Comments  : Note that string input is expected for $dur_or_len and
-           : integer output is returned.
+Returns: Duration as an integer.
+
+Argument:
+
+  $ratio - An integer multiplier $dur_or_len - A string consisting of
+  a numeric MIDI::Simple style numeric duration spec (e.g. d48, or
+  d60) or length spec (e.g. qn or dhn)
+
+Comments: Note that string input is expected for $dur_or_len and
+integer output is returned.
 
 =cut
 
@@ -346,18 +374,21 @@ sub raugmentation {
 
 =head2 rdiminution
 
- Usage     : rdiminution($ratio, $dur_or_len)
- Purpose   : Diminish duration of a note dividing it by $ratio.
- Returns   : Duration as an integer.
+Usage: rdiminution($ratio, $dur_or_len)
 
- Argument  : $ratio      - An integer divisor
-           : $dur_or_len - A string consisting of a numeric MIDI::Simple
-           : style numeric duration spec ( e.g., d48, or d60 ) or length
-           : spec ( e.g., qn or dhn )
+Purpose: Diminish duration of a note dividing it by $ratio.
 
- Comments  : Note that string input is expected for $dur_or_len and
-           : integer output is returned. This integer is the aproximate
-           : result of dividing the original duration by $ratio.
+Returns: Duration as an integer.
+
+Argument:
+
+  $ratio - An integer divisor $dur_or_len - A string consisting of a
+  numeric MIDI::Simple style numeric duration spec (e.g. d48, or d60)
+  or length spec (e.g. qn or dhn)
+
+Comments: Note that string input is expected for $dur_or_len and
+integer output is returned. This integer is the aproximate result of
+dividing the original duration by $ratio.
 
 =cut
 
@@ -372,17 +403,21 @@ sub rdiminution {
 
 =head2 augmentation
 
- Usage     : augmentation($dur_or_len)
- Purpose   : Augment duration of a note multiplying it by 2,
-           : (i.e., double it).
- Returns   : Duration as an integer.
+Usage: augmentation($dur_or_len)
 
- Argument  : $dur_or_len - A string consisting of a numeric MIDI::Simple
-           : style numeric duration spec ( e.g., d48, or d60 ) or length
-           : spec ( e.g., qn or dhn )
+Purpose: Augment duration of a note multiplying it by 2, (i.e. double
+it).
 
- Comments  : Note that string input is expected for $dur_or_len and
-           : integer output is returned.
+Returns: Duration as an integer.
+
+Argument:
+
+  $dur_or_len - A string consisting of a numeric MIDI::Simple style
+  numeric duration spec (e.g. d48, or d60) or length spec (e.g. qn or
+  dhn)
+
+Comments: Note that string input is expected for $dur_or_len and
+integer output is returned.
 
 =cut
 
@@ -405,18 +440,21 @@ sub augmentation {
 
 =head2 diminution
 
- Usage     : diminution($dur_or_len)
- Purpose   : Diminish duration of a note dividing it by 2,
-           : (i.e., halve it).
- Returns   : Duration as an integer.
+Usage: diminution($dur_or_len)
 
- Argument  : $dur_or_len - A string consisting of a numeric MIDI::Simple
-           : style numeric duration spec ( e.g., d48, or d60 ) or length
-           : spec ( e.g., qn or dhn )
+Purpose: Diminish duration of a note dividing it by 2, (i.e. halve it).
 
- Comments  : Note that string input is expected for $dur_or_len and
-           : integer output is returned. This integer is the approximate
-           : result of dividing the original duration by 2.
+Returns: Duration as an integer.
+
+Argument:
+
+  $dur_or_len - A string consisting of a numeric MIDI::Simple style
+  numeric duration spec (e.g. d48, or d60) or length spec (e.g. qn or
+  dhn)
+
+Comments: Note that string input is expected for $dur_or_len and
+integer output is returned. This integer is the approximate result of
+dividing the original duration by 2.
 
 =cut
 
@@ -439,20 +477,23 @@ sub diminution {
 
 =head2 ntup
 
- Usage     : ntup($nelem, @subject)
- Purpose   : Catalog tuples of length $nelem in @subject.
- Returns   : An array of tuples of length $nelem.
+Usage: ntup($nelem, @subject)
 
- Argument  : $nelem   - Number of elements in each tuple
-           : @subject - Subject array to be scanned for tuples
+Purpose: Catalog tuples of length $nelem in @subject.
 
- Comments  : Scan begins with the 0th element of @subject looking for
-           : a tuple of length $nelem. Scan advances by one until it
-           : has found all tuples of length $nelem. For example:
-           : given the array @ar = qw( 1 2 3 4 ) and $nelem = 2
-           : ntup(2, @ar) would return @ret = qw( 1 2 2 3 3 4 ). Note
-           : that for $nelem == any of -1, 0, 5 using the same @ar as
-           : its subject array ntup returns qw();
+Returns: An array of tuples of length $nelem.
+
+Argument:
+
+  $nelem   - Number of elements in each tuple
+  @subject - Subject array to be scanned for tuples
+
+Comments: Scan begins with the 0th element of @subject looking for a
+tuple of length $nelem. Scan advances by one until it has found all
+tuples of length $nelem. For example: given the array
+@ar = qw(1 2 3 4) and $nelem = 2, then ntup(2, @ar) would return
+@ret = qw(1 2 2 3 3 4). Note that for $nelem == any of -1, 0, 5 using
+the same @ar as its subject array ntup returns ();
 
 =cut
 
