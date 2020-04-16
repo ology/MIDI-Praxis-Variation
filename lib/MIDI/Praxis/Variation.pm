@@ -250,7 +250,7 @@ sub retrograde_inversion {
 sub dur {
     my ($tempo, $arg) = (MIDI::Simple::Tempo, @_); 
 
-    return unless $arg;
+    return () unless $arg;
 
     if($arg =~ m<^d(\d+)$>s) {   # numeric duration spec
         return 0 + $1;
@@ -314,8 +314,8 @@ sub tye {
 sub raugmentation {
     my ($ratio, $dur_or_len) = @_; 
 
-    return () unless (1 < $ratio);
-    return () unless length $dur_or_len;
+    return () unless $ratio && 1 < $ratio;
+    return () unless $dur_or_len && length $dur_or_len;
     
     return dur($dur_or_len) * $ratio;
 }
@@ -446,7 +446,7 @@ sub ntup {
     my @ret = ();
     my $index = 0;
 
-    return unless $nelem && @tmpar;
+    return () unless $nelem && @tmpar;
 
     unless ( @tmpar < $nelem ) {
         for ($index=0; $index <= $#tmpar-$nelem+1; $index++) {
