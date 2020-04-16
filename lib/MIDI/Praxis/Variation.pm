@@ -123,7 +123,7 @@ sub retrograde {
            : an array of note names.
 
  Arguments : $distance - an integer giving distance and direction.
-           : @array    - an array of note names. 
+           : @array    - an array of note names.
 
  Comments  : Expects to see an integer followed an array of
            : MIDI::Simple style note names. The integer specifies
@@ -162,7 +162,7 @@ sub transposition {
            : an array of note names.
 
  Arguments : $axis  -  a note to use as the axis of this inversion.
-           : @array -  an array of note names. 
+           : @array -  an array of note names.
 
  Comments  : Expects to see a MIDI::Simple style note name.
            : followed by an array of such names. These give
@@ -433,7 +433,7 @@ sub diminution {
  Comments  : Scan begins with the 0th element of @subject looking for
            : a tuple of length $nelem. Scan advances by one until it
            : has found all tuples of length $nelem. For example:
-           : given the array @ar = qw( 1 2 3 4 ) and $nelem = 2 
+           : given the array @ar = qw( 1 2 3 4 ) and $nelem = 2
            : ntup(2, @ar) would return @ret = qw( 1 2 2 3 3 4 ). Note
            : that for $nelem == any of -1, 0, 5 using the same @ar as
            : its subject array ntup returns qw();
