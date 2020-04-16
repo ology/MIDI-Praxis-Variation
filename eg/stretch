@@ -16,11 +16,7 @@ my $size     = 4; # Phrase duration size in quarter notes
 my $t_octave = 4; # Treble octave
 my $b_patch  = 35; #42;
 
-my $sizes = {
-    hn => 2,
-    qn => 1,
-    en => 0.5,
-};
+my $sizes = { %MIDI::Simple::Length };
 
 my $score = MIDI::Util::setup_score(bpm => $bpm, patch => $patch);
 
