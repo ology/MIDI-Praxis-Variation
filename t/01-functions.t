@@ -78,6 +78,14 @@ is $got, $expect, 'note_name_to_number';
 $expect = [];
 is_deeply \@got, $expect, 'ntup';
 
+@got = ntup(0, @notes);
+$expect = [];
+is_deeply \@got, $expect, 'ntup';
+
+@got = ntup(4, @notes);
+$expect = [];
+is_deeply \@got, $expect, 'ntup';
+
 @got = ntup(2, @notes);
 $expect = [qw(C5 E5 E5 G5)];
 is_deeply \@got, $expect, 'ntup';
