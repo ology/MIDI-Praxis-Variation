@@ -151,7 +151,7 @@ sub retrograde {
            : an array of note names OR MIDI note numbers.
 
  Arguments : $distance - an integer giving distance and direction.
-           : @array    - an array of note names.
+           : @array    - an array of note names OR MIDI note numbers.
 
  Comments  : Expects to see an integer followed an array of
            : MIDI::Simple style note names OR MIDI note numbers.
