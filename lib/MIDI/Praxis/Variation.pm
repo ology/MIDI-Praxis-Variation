@@ -147,18 +147,18 @@ sub retrograde {
 
  Usage     : transposition($distance, @array)
  Purpose   : Form the transposition of an array of notes.
- Returns   : MIDI note numbers equivalent by transposition to
-           : an array of note names.
+ Returns   : MIDI note numbers equivalent by transposition from
+           : an array of note names OR MIDI note numbers.
 
  Arguments : $distance - an integer giving distance and direction.
            : @array    - an array of note names.
 
  Comments  : Expects to see an integer followed an array of
-           : MIDI::Simple style note names. The integer specifies
-           : the direction and distance of transposition. For
-           : example, 8 indicates 8 semitones up while -7 asks
-           : for 7 semitones down. The array argument specifies
-           : the notes to be transposed.
+           : MIDI::Simple style note names OR MIDI note numbers.
+           : The integer specifies the direction and distance of
+           : transposition. For example, 8 indicates 8 semitones
+           : up while -7 asks for 7 semitones down. The array
+           : argument specifies the notes to be transposed.
 
 =cut
 
@@ -169,7 +169,12 @@ sub transposition {
 
     return () unless length $notes[0];
 
-    @ret = original(@notes);
+    if ($notes[0] =~ /[A-G]/) {
+        @ret = original(@notes);
+    }
+    else {
+        @ret = @notes;
+    }
 
     my $inc = 0;
 
