@@ -217,14 +217,13 @@ sub inversion {
     my $first  = -1;
     my $delta  = 0;
 
-    my @transposed = ();
-    my @ret = ();
-
     $center = note_name_to_number($axis);
     $first  = note_name_to_number($notes[0]);
     $delta  = $center - $first;
 
-    @transposed = transposition($delta, @notes);
+    my @transposed = transposition($delta, @notes);
+
+    my @ret = ();
 
     for my $note (@transposed) {
         push @ret, 2 * $center - $note;
