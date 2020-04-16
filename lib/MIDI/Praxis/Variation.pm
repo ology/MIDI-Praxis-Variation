@@ -458,8 +458,7 @@ sub diminution {
 =cut
 
 sub ntup {
-    my $nelem = shift;
-    my @tmpar = @_;
+    my ($nelem, @tmpar) = @_;
 
     my @ret = ();
     my $index = 0;
