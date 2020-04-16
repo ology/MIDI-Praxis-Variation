@@ -316,7 +316,7 @@ sub raugmentation {
 
     return () unless $ratio && 1 < $ratio;
     return () unless $dur_or_len && length $dur_or_len;
-    
+
     return dur($dur_or_len) * $ratio;
 }
 
@@ -341,8 +341,8 @@ sub raugmentation {
 sub rdiminution {
     my ($ratio, $dur_or_len) = @_; 
 
-    return () unless (1 < $ratio);
-    return () unless length $dur_or_len;
+    return () unless $ratio && 1 < $ratio;
+    return () unless $dur_or_len && length $dur_or_len;
 
     my $ret =  sprintf( "%.0f", (dur($dur_or_len) / $ratio));
     
