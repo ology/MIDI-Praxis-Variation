@@ -61,7 +61,7 @@ BEGIN {
 
 =head1 DESCRIPTION
 
-Melodic variation techniques, as implemented here, expect an array of MIDI::Simple style note names as input. They return an array of Midi note numbers. These returned note representations can be printed directly or used, perhaps in MIDI::Simple fashion, as input to functions/methods that accept midi note number input.
+Melodic variation techniques, as implemented here, expect an array of MIDI::Simple style note names as input. They return an array of MIDI note numbers. These returned note representations can be printed directly or used, perhaps in MIDI::Simple fashion, as input to functions/methods that accept midi note number input.
 
 =head2 note_name_to_number
 
@@ -141,7 +141,7 @@ sub retrograde {
 
  Usage     : transposition($distance, @array)
  Purpose   : Form the transposition of an array of notes.
- Returns   : Midi note numbers equivalent by transposition to
+ Returns   : MIDI note numbers equivalent by transposition to
            : an array of note names.
 
  Arguments : $distance - an integer giving distance and direction.
@@ -175,7 +175,7 @@ sub transposition {
 
  Usage     : inversion($axis, @array)
  Purpose   : Form the inversion of an array of notes.
- Returns   : Midi note numbers equivalent by inversion to
+ Returns   : MIDI note numbers equivalent by inversion to
            : an array of note names.
 
  Arguments : $axis  -  a note to use as the axis of this inversion.
@@ -217,7 +217,7 @@ sub inversion {
 
  Usage     : retrograde_inversion($axis, @array)
  Purpose   : Form the retrograde inversion of an array of notes.
- Returns   : Midi note numbers equivalent by retrograde inversion to
+ Returns   : MIDI note numbers equivalent by retrograde inversion to
            : an array of note names.
 
  Argument  : @array -  an array of note names.
