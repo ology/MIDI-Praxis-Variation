@@ -458,19 +458,19 @@ sub diminution {
 =cut
 
 sub ntup {
-    my ($nelem, @tmpar) = @_;
+    my ($nelem, @notes) = @_;
 
-    return () unless $nelem && @tmpar;
+    return () unless $nelem && @notes;
 
     my @ret = ();
 
-    if (@tmpar >= $nelem) {
-        for my $index (0 .. @tmpar - $nelem) {
-            push @ret, @tmpar[$index .. $index + $nelem - 1];
+    if (@notes >= $nelem) {
+        for my $index (0 .. @notes - $nelem) {
+            push @ret, @notes[$index .. $index + $nelem - 1];
         }
     }
 
-    if (@tmpar == $nelem) {
+    if (@notes == $nelem) {
         @ret = @_;
     }
 
