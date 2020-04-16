@@ -282,7 +282,8 @@ sub dur {
 
     if($arg =~ m<^d(\d+)$>s) {   # numeric duration spec
         return 0 + $1;
-    } elsif (exists $MIDI::Simple::Length{$arg}) {   # length spec
+    }
+    elsif (exists $MIDI::Simple::Length{$arg}) {   # length spec
         return 0 + ($tempo * $MIDI::Simple::Length{$arg});
     }
 }
