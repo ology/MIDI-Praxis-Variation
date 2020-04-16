@@ -472,7 +472,7 @@ sub ntup {
         }
     }
 
-    if ( @tmpar == $nelem ) {
+    if (@tmpar == $nelem) {
         @ret = @_;
     }
 
