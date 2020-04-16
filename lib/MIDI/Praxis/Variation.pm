@@ -455,15 +455,15 @@ sub diminution {
 =cut
 
 sub ntup {
-    my ($nelem, @notes) = @_;
+    my ($n, @notes) = @_;
 
-    return () unless $nelem && @notes;
+    return () unless $n && @notes;
 
     my @ret = ();
 
-    if (@notes >= $nelem) {
-        for my $index (0 .. @notes - $nelem) {
-            push @ret, @notes[$index .. $index + $nelem - 1];
+    if (@notes >= $n) {
+        for my $index (0 .. @notes - $n) {
+            push @ret, @notes[$index .. $index + $n - 1];
         }
     }
 
