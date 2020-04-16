@@ -499,6 +499,10 @@ The F<eg/*> and F<t/01-functions.t> files in this distribution
 
 L<MIDI::Simple>
 
+=head1 MAINTAINER
+
+Gene Boggs <gene@cpan.org>
+
 =cut
 
 1;
