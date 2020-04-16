@@ -492,6 +492,8 @@ sub ntup {
 
 =head1 SEE ALSO
 
+The F<eg/*> and F<t/01-functions.t> files in this distribution
+
 L<MIDI::Simple>
 
 =cut
