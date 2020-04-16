@@ -227,7 +227,7 @@ sub inversion {
     @transposed = transposition($delta, @notes);
 
     for my $note (@transposed) {
-        push @ret, (2 * $center - $note);
+        push @ret, 2 * $center - $note;
     }
 
     return @ret;
