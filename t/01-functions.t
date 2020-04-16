@@ -22,6 +22,8 @@ BEGIN {
     );
 }
 
+my @notes = qw(C5 E5 G5);
+
 my @got = augmentation();
 my $expect = [];
 is_deeply \@got, $expect, 'augmentation';
@@ -61,7 +63,6 @@ is $got, $expect, 'dur';
 $expect = [];
 is_deeply \@got, $expect, 'inversion';
 
-my @notes = qw(C5 E5 G5);
 @got = inversion('B4', @notes);
 $expect = [59, 55, 52];
 is_deeply \@got, $expect, 'inversion';
