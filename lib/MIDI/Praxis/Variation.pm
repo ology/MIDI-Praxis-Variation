@@ -213,13 +213,9 @@ sub inversion {
     return () unless length $axis;
     return () unless length $notes[0];
 
-    my $center = -1;
-    my $first  = -1;
-    my $delta  = 0;
-
-    $center = note_name_to_number($axis);
-    $first  = note_name_to_number($notes[0]);
-    $delta  = $center - $first;
+    my $center = note_name_to_number($axis);
+    my $first  = note_name_to_number($notes[0]);
+    my $delta  = $center - $first;
 
     my @transposed = transposition($delta, @notes);
 
