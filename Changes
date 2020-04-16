@@ -4,6 +4,7 @@ Revision history for MIDI::Praxis::Variation
     - Significantly clean up code.
     - Clean up distribution files for dzil.
     - Add tests!
+    - Change from Gnu to the Artistic license.
 
 0.05 Fri Sep 30 13:01:46 EDT 2005
     - Added prerequisite module 'MIDI::Simple' => '0.81' to Makefile.PL
