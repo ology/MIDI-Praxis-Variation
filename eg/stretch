@@ -1,0 +1,69 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+# Use local libraries
+use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw( MIDI-Praxis-Variation MIDI-Util Music-Duration-Partition );
+use MIDI::Praxis::Variation qw(augmentation transposition);
+use MIDI::Util;
+use Music::Duration::Partition;
+use Music::Scales;
+
+my $bpm   = shift || 120;
+my $patch = shift || 4; # Treble patch
+
+my $size     = 4; # Phrase duration size in quarter notes
+my $t_octave = 4; # Treble octave
+my $b_patch  = 35; #42;
+
+my $score = MIDI::Util::setup_score(bpm => $bpm, patch => $patch);
+
+my $mdp = Music::Duration::Partition->new(
+    size => $size,
+    pool => [qw/ hn qn en /],
+);
+my $motif = $mdp->motif;
+use Data::Dumper;print Dumper $motif;
+
+my @notes;
+
+$score->synch(
+    \&treble,
+    \&bass,
+    \&drums,
+);
+
+$score->write_score("$0.mid");
+
+sub treble {
+    MIDI::Util::set_chan_patch($score, 0, $patch);
+
+    my @scale = get_scale_MIDI('C', $t_octave, 'pentatonic');
+
+    for my $n (0 .. 63) {
+        my $note = $scale[int rand @scale];
+        push @notes, $note;
+        $score->n($motif->[$n % @$motif], $note);
+    }
+}
+
+sub bass {
+    MIDI::Util::set_chan_patch($score, 1, $b_patch);
+
+    my @transposed = transposition(-24, @notes);
+    my @stretched  = augmentation(@$motif);
+
+    for my $n (0 .. 31) {
+        $score->n($stretched[$n % @stretched], $transposed[$n % @transposed]);
+    }
+}
+
+sub drums {
+    MIDI::Util::set_chan_patch($score, 9, 44);
+
+    for my $duration (('qn') x 32) {
+        $score->n($duration, 44); # hi-hat
+    }
+
+#    $score->n('wn', 49); # crash
+}
