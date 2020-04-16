@@ -472,6 +472,7 @@ sub diminution {
 sub ntup {
     my $nelem = shift;
     my @tmpar = @_;
+
     my @ret = ();
     my $index = 0;
 
