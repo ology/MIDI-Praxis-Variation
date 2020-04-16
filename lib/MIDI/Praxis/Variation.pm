@@ -367,9 +367,7 @@ sub rdiminution {
     return () unless $ratio && 1 < $ratio;
     return () unless $dur_or_len && length $dur_or_len;
 
-    my $ret =  sprintf( "%.0f", dur($dur_or_len) / $ratio);
-
-    return $ret;
+    return sprintf "%.0f", dur($dur_or_len) / $ratio;
 }
 
 
