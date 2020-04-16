@@ -83,7 +83,7 @@ array of MIDI note numbers or duration values.
 sub note_name_to_number {
     my ($in) = @_;
 
-    return () unless length $in;
+    return () unless $in;
 
     my $note_number = -1;
 
@@ -115,7 +115,7 @@ sub original {
 
     my @ret = ();
 
-    return () unless length $notes[0];
+    return () unless @notes;
 
     for my $note (@notes) {
         push @ret, note_name_to_number($note);
@@ -142,7 +142,7 @@ sub retrograde {
 
     my @ret = ();
 
-    return () unless length $notes[0];
+    return () unless @notes;
 
     @ret = reverse original( @notes );
 
@@ -172,7 +172,7 @@ sub retrograde {
 sub transposition {
     my ($delta, @notes) = @_;
 
-    return () unless length $notes[0];
+    return () unless defined $delta && @notes;
 
     my @ret = ();
 
@@ -210,8 +210,7 @@ sub transposition {
 sub inversion {
     my ($axis, @notes) = @_;
 
-    return () unless length $axis;
-    return () unless length $notes[0];
+    return () unless $axis && @notes;
 
     my $center = note_name_to_number($axis);
     my $first  = note_name_to_number($notes[0]);
@@ -246,8 +245,7 @@ sub inversion {
 sub retrograde_inversion {
     my ($axis, @notes) = @_; # A note name followed by an array of note names
 
-    return () unless length $axis;
-    return () unless length $notes[0];
+    return () unless $axis && @notes;
 
     my @rev_notes = ();
     my @ret = ();
@@ -314,7 +312,7 @@ sub dur {
 sub tye {
     my @dur_or_len = @_;
 
-    return () unless length $dur_or_len[0];
+    return () unless @dur_or_len;
 
     my $sum = 0;
 
@@ -372,8 +370,7 @@ sub raugmentation {
 sub rdiminution {
     my ($ratio, $dur_or_len) = @_;
 
-    return () unless $ratio && 1 < $ratio;
-    return () unless $dur_or_len && length $dur_or_len;
+    return () unless $ratio && 1 < $ratio && $dur_or_len;
 
     return sprintf "%.0f", dur($dur_or_len) / $ratio;
 }
@@ -398,7 +395,7 @@ sub rdiminution {
 sub augmentation {
     my @dur_or_len = @_;
 
-    return () unless length $dur_or_len[0];
+    return () unless @dur_or_len;
 
     my @ret = ();
 
@@ -432,7 +429,7 @@ sub augmentation {
 sub diminution {
     my @dur_or_len = @_;
 
-    return () unless length $dur_or_len[0];
+    return () unless @dur_or_len;
 
     my @ret = ();
 
