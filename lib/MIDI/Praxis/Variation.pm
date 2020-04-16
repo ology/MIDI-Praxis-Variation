@@ -285,12 +285,16 @@ sub dur {
 
     return () unless $arg;
 
+    my $dur = 0;
+
     if ($arg =~ /^d(\d+)$/) {   # numeric duration spec
-        return 0 + $1;
+        $dur = 0 + $1;
     }
     elsif (exists $MIDI::Simple::Length{$arg}) {   # length spec
-        return 0 + ($tempo * $MIDI::Simple::Length{$arg});
+        $dur = 0 + ($tempo * $MIDI::Simple::Length{$arg});
     }
+
+    return $dur;
 }
 
 
