@@ -309,11 +309,9 @@ sub tye {
     return () unless length $dur_or_len[0];
 
     my $sum = 0;
-    my $inc = 0;
 
-    for (@dur_or_len) {
-        $sum += dur($dur_or_len[$inc]);
-        $inc++;
+    for my $dura (@dur_or_len) {
+        $sum += dur($dura);
     }
 
     return $sum;
