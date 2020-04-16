@@ -16,6 +16,12 @@ my $size     = 4; # Phrase duration size in quarter notes
 my $t_octave = 4; # Treble octave
 my $b_patch  = 35; #42;
 
+my $sizes = {
+    hn => 2,
+    qn => 1,
+    en => 0.5,
+};
+
 my $score = MIDI::Util::setup_score(bpm => $bpm, patch => $patch);
 
 my $mdp = Music::Duration::Partition->new(
@@ -26,6 +32,8 @@ my $motif = $mdp->motif;
 use Data::Dumper;print Dumper $motif;
 
 my @notes;
+
+my $count = 0;
 
 $score->synch(
     \&treble,
@@ -43,7 +51,9 @@ sub treble {
     for my $n (0 .. 63) {
         my $note = $scale[int rand @scale];
         push @notes, $note;
-        $score->n($motif->[$n % @$motif], $note);
+        my $dura = $motif->[$n % @$motif];
+        $score->n($dura, $note);
+        $count += $sizes->{$dura};
     }
 }
 
@@ -61,7 +71,7 @@ sub bass {
 sub drums {
     MIDI::Util::set_chan_patch($score, 9, 44);
 
-    for my $duration (('qn') x 32) {
+    for my $duration (('qn') x $count) {
         $score->n($duration, 44); # hi-hat
     }
 
