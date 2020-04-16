@@ -52,68 +52,24 @@ BEGIN {
 	);
 }
 
-
-
-########################################### main pod documentation begin ##
-
-
 =head1 NAME
 
-MIDI::Praxis::Variation - Interface for variation techniques commonly used in music composition.
+MIDI::Praxis::Variation - Interface for variation techniques commonly used in music composition
 
 =head1 SYNOPSIS
 
   use MIDI::Praxis::Variation
 
-
 =head1 DESCRIPTION
 
 Melodic variation techniques, as implemented here, expect an array of MIDI::Simple style note names as input. They return an array of Midi note numbers. These returned note representations can be printed directly or used, perhaps in MIDI::Simple fashion, as input to functions/methods that accept midi note number input.
 
-=head1 BUGS
-
-Any that still exist have eluded our testing. This software is supplied as is with no representations as to its fitness for use. Use it at your own risk. If your system, your data, or all the forces of good in the universe are corrupted or destroyed as a result of your use of this software -- so it goes. 
-
-=head1 SUPPORT
-
-None
-
-=head1 AUTHOR
-
-	Craig Bourne
-	cbourne@cpan.org
-
-=head1 COPYRIGHT
-
-Copyright (c) Craig Bourne 2004
-All rights reserved
-
-This program is free software; you can redistribute
-it and/or modify it under the same terms as Perl itself.
-
-The full text of the license can be found in the
-LICENSE file included with this module.
-
-
 =head1 SEE ALSO
 
-MIDI::Simple(3).
+L<MIDI::Simple>
 
 =cut
 
-############################################# main pod documentation end ##
-
-# Have not yet thought out OO issues
-# sub new
-# {
-# 	my ($class, %parameters) = @_;
-# 
-# 	my $self = bless ({}, ref ($class) || $class);
-# 
-# 	return ($self);
-# }
-
-                                                                                                 
 =head2 note_name_to_number
 
  Usage     : note_name_to_number($note_name)
@@ -175,7 +131,6 @@ sub original {
  Argument  : @array -  an array of note names.
 
  Comments  : Expects to see a an array of MIDI::Simple style note names.
-					 
 
 =cut
 
@@ -337,7 +292,6 @@ sub dur {
 =cut
 
 sub tye {
-	                                                                                            
 	my @dur_or_len = @_;
 		                                                                                            
 	return () unless length $dur_or_len[0];
@@ -349,9 +303,10 @@ sub tye {
 		$sum += dur($dur_or_len[$inc]);
 		$inc++;
 	}
-		return dur($sum);
-																	                                                                                            
+
+    return dur($sum);
 }
+
 
 =head2 raugmentation
 
@@ -376,7 +331,6 @@ sub raugmentation {
 	
 	return dur($dur_or_len) * $ratio;
 }
-
 
 
 =head2 rdiminution
@@ -404,9 +358,7 @@ sub rdiminution {
 	my $ret =  sprintf( "%.0f", (dur($dur_or_len) / $ratio));
 	
 	return $ret;
-
 }
-
 
 
 =head2 augmentation
@@ -426,7 +378,6 @@ sub rdiminution {
 =cut
 
 sub augmentation {
-
 	my @dur_or_len = @_;
 
 	return () unless length $dur_or_len[0];
@@ -440,8 +391,8 @@ sub augmentation {
 		push @ret, $elem;
 		$inc++;
 	}
-	return @ret;
 
+	return @ret;
 }
 
 
@@ -463,8 +414,6 @@ sub augmentation {
 =cut
 
 sub diminution {
-
-
 	my @dur_or_len = @_;
 
 	return () unless length $dur_or_len[0];
@@ -478,8 +427,10 @@ sub diminution {
 		push @ret, $elem;
 		$inc++;
 	}
+
 	return @ret;
 }
+
 
 =head2 ntup
 
@@ -501,12 +452,10 @@ sub diminution {
 =cut
 
 sub ntup {
-
 	my $nelem = shift;
 	my @tmpar = @_;
 	my @ret = ();
 	my $index=0;
-	
 
 	unless ( @tmpar < $nelem ) {
 		for ($index=0; $index <= $#tmpar-$nelem+1; $index++) {
@@ -519,10 +468,6 @@ sub ntup {
 	}
 
 	return @ret;
-	
 }
 
-
-1; #this line is important and will help the module return a true value
-__END__
-
+1;
