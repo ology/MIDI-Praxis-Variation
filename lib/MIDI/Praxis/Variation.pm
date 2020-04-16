@@ -56,8 +56,8 @@ our %EXPORT_TAGS = (all => [qw(
   $x = note_name_to_number('C5');
   @x = ntup(2, @notes);
   @x = original(@notes);
-  $x = raugmentation(1.5, @dura);
-  $x = rdiminution(1.5, @dura);
+  $x = raugmentation(1.5, 'qn');
+  $x = rdiminution(1.5, 'qn');
   @x = retrograde(@notes);
   @x = retrograde_inversion('B4', @notes);
   @x = transposition(@notes);
