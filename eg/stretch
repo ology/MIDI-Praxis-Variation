@@ -77,6 +77,4 @@ sub drums {
     for my $duration (('qn') x $count) {
         $score->n($duration, 44); # hi-hat
     }
-
-#    $score->n('wn', 49); # crash
 }
