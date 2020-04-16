@@ -444,7 +444,9 @@ sub ntup {
     my $nelem = shift;
     my @tmpar = @_;
     my @ret = ();
-    my $index=0;
+    my $index = 0;
+
+    return unless $nelem && @tmpar;
 
     unless ( @tmpar < $nelem ) {
         for ($index=0; $index <= $#tmpar-$nelem+1; $index++) {
