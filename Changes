@@ -2,7 +2,7 @@ Revision history for MIDI::Praxis::Variation
 
 {{$NEXT}}
     - Significantly clean up code.
-    - Clean up distribution files.
+    - Clean up distribution files for dzil.
     - Add tests!
 
 0.05 Fri Sep 30 13:01:46 EDT 2005
