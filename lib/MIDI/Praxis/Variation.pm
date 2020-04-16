@@ -75,8 +75,11 @@ sub note_name_to_number($) {
 
 sub original {
     my @notes =  @_;
+
     my @ret = ();
+
     return () unless length $notes[0];
+
     my $inc = 0;
     for (@notes) {
         push @ret, note_name_to_number( $notes[$inc] );
