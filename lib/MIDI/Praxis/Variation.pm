@@ -140,7 +140,7 @@ sub retrograde {
 
     return () unless @notes;
 
-    @ret = reverse original( @notes );
+    @ret = reverse original(@notes);
 
     return @ret;
 }
@@ -214,11 +214,7 @@ sub inversion {
 
     my @transposed = transposition($delta, @notes);
 
-    my @ret = ();
-
-    for my $note (@transposed) {
-        push @ret, 2 * $center - $note;
-    }
+    my @ret = map { 2 * $center - $_ } @transposed;
 
     return @ret;
 }
