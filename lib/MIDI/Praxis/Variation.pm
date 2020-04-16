@@ -7,7 +7,7 @@ use warnings;
 
 use MIDI::Simple;
 
-our $VERSION = '0.05';
+our $VERSION = '0.0500';
 
 BEGIN {
 	use Exporter ();
