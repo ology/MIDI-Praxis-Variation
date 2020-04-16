@@ -12,9 +12,9 @@ our $VERSION = '0.0500';
 BEGIN {
 	use Exporter ();
 	use vars qw (@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-	@ISA         = qw (Exporter);
-	@EXPORT      = qw ();
- 	@EXPORT_OK   = qw (
+	@ISA       = qw (Exporter);
+	@EXPORT    = qw ();
+ 	@EXPORT_OK = qw (
 		note_name_to_number
 		dur
 		tye
@@ -28,31 +28,6 @@ BEGIN {
 		inversion
 		retrograde_inversion
 		ntup
-	);
-	%EXPORT_TAGS = (
-	Functions => [ qw( 
-		note_name_to_number
-		dur
-		tye
-		raugmentation
-		rdiminution
-		augmentation
-		diminution
-	) ],
-	Techniques => [ qw( 
-		original
-		retrograde
-		transposition
-		inversion
-		retrograde_inversion
-		raugmentation
-		rdiminution
-		augmentation
-		diminution
-	) ],
-	Utilities => [ qw(
-		ntup
-	) ],
 	);
 }
 
