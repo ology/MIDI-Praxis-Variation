@@ -70,7 +70,7 @@ sub bass {
 sub drums {
     MIDI::Util::set_chan_patch($score, 9, 44);
 
-    for my $n (1 .. $count) {
+    for (1 .. $count) {
         $score->n('qn', 44); # hi-hat
     }
 }
