@@ -61,7 +61,7 @@ our @EXPORT = qw(
 
 =head1 DESCRIPTION
 
-Melodic variation techniques, as implemented here, expect an array of MIDI::Simple style note names as input. They return an array of MIDI note numbers. These returned note representations can be printed directly or used, perhaps in MIDI::Simple fashion, as input to functions/methods that accept MIDI note number input.
+Melodic variation techniques, as implemented here, expect an array of MIDI::Simple style note names or durations as input. They return an array of MIDI note numbers or duration values.
 
 =head2 note_name_to_number
 
