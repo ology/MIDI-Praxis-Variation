@@ -29,7 +29,35 @@ our @EXPORT = qw(
 
 =head1 SYNOPSIS
 
-  use MIDI::Praxis::Variation
+  use MIDI::Praxis::Variation qw(
+    augmentation
+    diminution
+    dur
+    inversion
+    note_name_to_number
+    ntup
+    original
+    raugmentation
+    rdiminution
+    retrograde
+    retrograde_inversion
+    transposition
+    tye
+  );
+
+  my @x = augmentation('qn', 'qn');
+  @x = diminution('qn', 'qn');
+  my $x = dur('qn');
+  @x = inversion('B4', qw(C5 E5 G5));
+  $x = note_name_to_number('C5');
+  @x = ntup(2, qw(C5 E5 G5));
+  @x = original(qw(C5 E5 G5));
+  $x = raugmentation(1.5, 'qn');
+  $x = rdiminution(1.5, 'qn');
+  @x = retrograde(qw(C5 E5 G5));
+  @x = retrograde_inversion('B4', qw(C5 E5 G5));
+  @x = transposition(qw(C5 E5 G5));
+  $x = tye('qn', 'qn');
 
 =head1 DESCRIPTION
 
