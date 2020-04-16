@@ -427,7 +427,7 @@ sub augmentation {
            : spec ( e.g., qn or dhn )
 
  Comments  : Note that string input is expected for $dur_or_len and
-           : integer output is returned. This integer is the aproximate
+           : integer output is returned. This integer is the approximate
            : result of dividing the original duration by 2.
 
 =cut
