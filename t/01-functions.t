@@ -57,6 +57,10 @@ $got = note_name_to_number();
 $expect = undef;
 is $got, $expect, 'note_name_to_number';
 
+$got = note_name_to_number('X');
+$expect = -1;
+is $got, $expect, 'note_name_to_number';
+
 $got = note_name_to_number('C5');
 $expect = 60;
 is $got, $expect, 'note_name_to_number';

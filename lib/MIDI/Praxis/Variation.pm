@@ -73,7 +73,8 @@ array of MIDI note numbers or duration values.
 
  Usage     : note_name_to_number($note_name)
  Purpose   : Map a single note name to a MIDI note number.
- Returns   : An equivalent MIDI note number.
+ Returns   : An equivalent MIDI note number or -1 if not
+           : known.
 
  Comments  : Expects to see a MIDI::Simple style note name.
 
