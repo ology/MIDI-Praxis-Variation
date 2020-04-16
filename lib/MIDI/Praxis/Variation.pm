@@ -44,12 +44,7 @@ our %EXPORT_TAGS = (all => [qw(
 
 =head1 SYNOPSIS
 
-  use MIDI::Praxis::Variation qw(
-    augmentation diminution dur inversion
-    note_name_to_number ntup original
-    raugmentation rdiminution retrograde
-    retrograde_inversion transposition tye
-  );
+  use MIDI::Praxis::Variation ':all';
 
   my @notes = qw(C5 E5 G5);
   my @dura = qw(qn qn);
