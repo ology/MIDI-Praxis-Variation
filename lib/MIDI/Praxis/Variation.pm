@@ -201,10 +201,8 @@ sub inversion {
     return () unless length $notes[0];
 
     my $center = -1;
-    my $inc    = 0;
     my $first  = -1;
     my $delta  = 0;
-    my $temp   = -1;
 
     my @transposed = ();
     my @ret = ();
@@ -215,11 +213,8 @@ sub inversion {
 
     @transposed = transposition($delta, @notes);
 
-    $inc = 0;
-    for (@notes) {
-        $temp = $transposed[$inc];
-        push @ret, (2 * $center - $temp);
-        $inc++;
+    for my $note (@transposed) {
+        push @ret, (2 * $center - $note);
     }
 
     return @ret;
