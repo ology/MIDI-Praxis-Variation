@@ -12,7 +12,7 @@ use Music::Scales;
 my $bpm   = shift || 120;
 my $patch = shift || 4; # Treble patch
 
-my $size     = 4; # Phrase duration size in quarter notes
+my $size     = 4; # Motif duration size in quarter notes
 my $t_octave = 4; # Treble octave
 my $b_patch  = 35; #42;
 
