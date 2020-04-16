@@ -280,7 +280,7 @@ sub dur {
 
     return () unless $arg;
 
-    if ($arg =~ m<^d(\d+)$>s) {   # numeric duration spec
+    if ($arg =~ /^d(\d+)$/) {   # numeric duration spec
         return 0 + $1;
     }
     elsif (exists $MIDI::Simple::Length{$arg}) {   # length spec
