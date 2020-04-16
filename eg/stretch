@@ -51,8 +51,11 @@ sub treble {
     for my $n (0 .. 63) {
         my $note = $scale[int rand @scale];
         push @notes, $note;
+
         my $dura = $motif->[$n % @$motif];
+
         $score->n($dura, $note);
+
         $count += $sizes->{$dura};
     }
 }
