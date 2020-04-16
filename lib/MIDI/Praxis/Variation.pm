@@ -457,7 +457,7 @@ sub diminution {
 sub ntup {
     my ($n, @notes) = @_;
 
-    return () unless $n && @notes;
+    return () unless defined $n && @notes;
 
     my @ret = ();
 
