@@ -460,13 +460,12 @@ sub diminution {
 sub ntup {
     my ($nelem, @tmpar) = @_;
 
-    my @ret = ();
-    my $index = 0;
-
     return () unless $nelem && @tmpar;
 
+    my @ret = ();
+
     if (@tmpar >= $nelem) {
-        for ($index = 0; $index <= $#tmpar - $nelem + 1; $index++) {
+        for my $index (0 .. @tmpar - $nelem) {
             push @ret, @tmpar[$index .. $index + $nelem - 1];
         }
     }
