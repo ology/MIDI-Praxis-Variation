@@ -46,4 +46,124 @@ is_deeply \@got, $expect, 'diminution';
 $expect = ['d48', 'd48'];
 is_deeply \@got, $expect, 'diminution';
 
+my $got = dur();
+$expect = undef;
+is $got, $expect, 'dur';
+
+$got = dur('d96');
+$expect = 96;
+is $got, $expect, 'dur';
+
+$got = dur('qn');
+is $got, $expect, 'dur';
+
+@got = inversion();
+$expect = [];
+is_deeply \@got, $expect, 'inversion';
+
+my @notes = qw(C5 E5 G5);
+@got = inversion('B4', @notes);
+$expect = [59, 55, 52];
+is_deeply \@got, $expect, 'inversion';
+
+$got = note_name_to_number();
+$expect = undef;
+is $got, $expect, 'note_name_to_number';
+
+$got = note_name_to_number('C5');
+$expect = 60;
+is $got, $expect, 'note_name_to_number';
+
+@got = ntup();
+$expect = [];
+is_deeply \@got, $expect, 'ntup';
+
+@got = ntup(2, @notes);
+$expect = [qw(C5 E5 E5 G5)];
+is_deeply \@got, $expect, 'ntup';
+
+@got = original();
+$expect = [];
+is_deeply \@got, $expect, 'original';
+
+@got = original(@notes);
+$expect = [60, 64, 67];
+is_deeply \@got, $expect, 'original';
+
+$got = raugmentation();
+$expect = undef;
+is $got, $expect, 'raugmentation';
+
+$got = raugmentation(0.5, 'd100');
+$expect = undef;
+is $got, $expect, 'raugmentation';
+
+$got = raugmentation(1.5, 'd100');
+$expect = 150;
+is $got, $expect, 'raugmentation';
+
+$got = raugmentation(1.5, 'qn');
+$expect = 144;
+is $got, $expect, 'raugmentation';
+
+$got = rdiminution();
+$expect = undef;
+is $got, $expect, 'rdiminution';
+
+$got = rdiminution(0.5, 'd100');
+$expect = undef;
+is $got, $expect, 'rdiminution';
+
+$got = rdiminution(1.5, 'd100');
+$expect = 67;
+is $got, $expect, 'rdiminution';
+
+$got = rdiminution(1.5, 'qn');
+$expect = 64;
+is $got, $expect, 'rdiminution';
+
+@got = retrograde();
+$expect = [];
+is_deeply \@got, $expect, 'retrograde';
+
+@got = retrograde(@notes);
+$expect = [67, 64, 60];
+is_deeply \@got, $expect, 'retrograde';
+
+@got = retrograde_inversion();
+$expect = [];
+is_deeply \@got, $expect, 'retrograde_inversion';
+
+@got = retrograde_inversion('B4', @notes);
+$expect = [59, 62, 66];
+is_deeply \@got, $expect, 'retrograde_inversion';
+
+@got = transposition();
+$expect = [];
+is_deeply \@got, $expect, 'transposition';
+
+@got = transposition(0, @notes);
+$expect = [60, 64, 67];
+is_deeply \@got, $expect, 'transposition';
+
+@got = transposition(-12, @notes);
+$expect = [48, 52, 55];
+is_deeply \@got, $expect, 'transposition';
+
+@got = transposition(12, @notes);
+$expect = [72, 76, 79];
+is_deeply \@got, $expect, 'transposition';
+
+$got = tye();
+$expect = undef;
+is $got, $expect, 'tye';
+
+$got = tye('qn');
+$expect = 96;
+is $got, $expect, 'tye';
+
+$got = tye('qn', 'qn');
+$expect = 96 * 2;
+is $got, $expect, 'tye';
+
 done_testing();
