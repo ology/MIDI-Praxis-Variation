@@ -101,8 +101,11 @@ sub original {
 
 sub retrograde {
     my @notes =  @_;
+
     my @ret = ();
+
     return () unless length $notes[0];
+
     @ret = reverse original( @notes );
 
     return @ret;
