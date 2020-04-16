@@ -33,13 +33,13 @@ our @EXPORT = qw(
 
 =head1 DESCRIPTION
 
-Melodic variation techniques, as implemented here, expect an array of MIDI::Simple style note names as input. They return an array of MIDI note numbers. These returned note representations can be printed directly or used, perhaps in MIDI::Simple fashion, as input to functions/methods that accept midi note number input.
+Melodic variation techniques, as implemented here, expect an array of MIDI::Simple style note names as input. They return an array of MIDI note numbers. These returned note representations can be printed directly or used, perhaps in MIDI::Simple fashion, as input to functions/methods that accept MIDI note number input.
 
 =head2 note_name_to_number
 
  Usage     : note_name_to_number($note_name)
- Purpose   : Map a single note name to a midi note number.
- Returns   : An equivalent midi note number.
+ Purpose   : Map a single note name to a MIDI note number.
+ Returns   : An equivalent MIDI note number.
 
  Comments  : Expects to see a MIDI::Simple style note name.
 
@@ -62,13 +62,13 @@ sub note_name_to_number($) {
 =head2 original
 
  Usage     : original(@array)
- Purpose   : Map note names to midi note numbers.
- Returns   : An equivalent array of midi note numbers.
+ Purpose   : Map note names to MIDI note numbers.
+ Returns   : An equivalent array of MIDI note numbers.
 
  Argument  : @array -  an array of note names.
 
  Comments  : Expects to see a an array of MIDI::Simple style note names,
-           : e.g.,  C5, Fs6, Bf3. It returns equivilent midi note
+           : e.g.,  C5, Fs6, Bf3. It returns equivilent MIDI note
            : numbers leaving the array of note names untouched.
 
 =cut
@@ -91,7 +91,7 @@ sub original {
 
  Usage     : retrograde(@array)
  Purpose   : Form the retrograde of an array of note names.
- Returns   : The retrograde equivalent array as midi note numbers.
+ Returns   : The retrograde equivalent array as MIDI note numbers.
 
  Argument  : @array -  an array of note names.
 
