@@ -15,19 +15,19 @@ BEGIN {
 	@ISA       = qw (Exporter);
 	@EXPORT    = qw ();
  	@EXPORT_OK = qw (
-		note_name_to_number
-		dur
-		tye
-		raugmentation
-		rdiminution
 		augmentation
 		diminution
-		original
-		retrograde
-		transposition
+		dur
 		inversion
-		retrograde_inversion
+		note_name_to_number
 		ntup
+		original
+		raugmentation
+		rdiminution
+		retrograde
+		retrograde_inversion
+		transposition
+		tye
 	);
 }
 
