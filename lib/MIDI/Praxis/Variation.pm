@@ -470,10 +470,6 @@ sub ntup {
         }
     }
 
-    if (@notes == $nelem) {
-        @ret = @_;
-    }
-
     return @ret;
 }
 
