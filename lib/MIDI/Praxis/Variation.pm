@@ -1,7 +1,10 @@
-require 5;
 package MIDI::Praxis::Variation;
+
+# ABSTRACT: Variation techniques used in music composition
+
 use strict;
 use warnings;
+
 use MIDI::Simple;
 
 BEGIN {
@@ -51,10 +54,6 @@ BEGIN {
 	) ],
 	);
 }
-
-=head1 NAME
-
-MIDI::Praxis::Variation - Interface for variation techniques commonly used in music composition
 
 =head1 SYNOPSIS
 
