@@ -80,9 +80,11 @@ array of MIDI note numbers or duration values.
 =cut
 
 sub note_name_to_number {
-    my ($note_number, $in) = (-1, @_);
+    my ($in) = @_;
 
     return () unless length $in;
+
+    my $note_number = -1;
 
     if ( $in =~ /^([A-Za-z]+)(\d+)/s ) {    # E.g.,  "C3", "As4"
         $note_number = $MIDI::Simple::Note{$1} + $2 * 12
