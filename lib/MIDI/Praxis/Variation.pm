@@ -64,12 +64,6 @@ MIDI::Praxis::Variation - Interface for variation techniques commonly used in mu
 
 Melodic variation techniques, as implemented here, expect an array of MIDI::Simple style note names as input. They return an array of Midi note numbers. These returned note representations can be printed directly or used, perhaps in MIDI::Simple fashion, as input to functions/methods that accept midi note number input.
 
-=head1 SEE ALSO
-
-L<MIDI::Simple>
-
-=cut
-
 =head2 note_name_to_number
 
  Usage     : note_name_to_number($note_name)
@@ -469,5 +463,11 @@ sub ntup {
 
 	return @ret;
 }
+
+=head1 SEE ALSO
+
+L<MIDI::Simple>
+
+=cut
 
 1;
