@@ -250,6 +250,8 @@ sub retrograde_inversion {
 sub dur {
     my ($tempo, $arg) = (MIDI::Simple::Tempo, @_); 
 
+    return unless $arg;
+
     if($arg =~ m<^d(\d+)$>s) {   # numeric duration spec
         return 0 + $1;
     } elsif (exists $MIDI::Simple::Length{$arg}) {   # length spec
