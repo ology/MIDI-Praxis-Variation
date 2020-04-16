@@ -304,7 +304,7 @@ sub tye {
 		$inc++;
 	}
 
-    return dur($sum);
+    return $sum;
 }
 
 
