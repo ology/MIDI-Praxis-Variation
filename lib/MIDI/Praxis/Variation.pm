@@ -102,7 +102,7 @@ sub note_name_to_number {
  Purpose   : Map note names to MIDI note numbers.
  Returns   : An equivalent array of MIDI note numbers.
 
- Argument  : @array -  an array of note names.
+ Argument  : @array - An array of note names.
 
  Comments  : Expects to see a an array of MIDI::Simple style note names,
            : e.g.,  C5, Fs6, Bf3. It returns equivilent MIDI note
@@ -127,7 +127,7 @@ sub original {
  Purpose   : Form the retrograde of an array of note names.
  Returns   : The retrograde equivalent array as MIDI note numbers.
 
- Argument  : @array -  an array of note names.
+ Argument  : @array - An array of note names.
 
  Comments  : Expects to see a an array of MIDI::Simple style note names.
 
@@ -153,8 +153,8 @@ sub retrograde {
  Returns   : MIDI note numbers equivalent by transposition from
            : an array of note names OR MIDI note numbers.
 
- Arguments : $distance - an integer giving distance and direction.
-           : @array    - an array of note names OR MIDI note numbers.
+ Arguments : $distance - An integer giving distance and direction.
+           : @array    - An array of note names OR MIDI note numbers.
 
  Comments  : Expects to see an integer followed an array of
            : MIDI::Simple style note names OR MIDI note numbers.
@@ -227,7 +227,7 @@ sub inversion {
  Returns   : MIDI note numbers equivalent by retrograde inversion to
            : an array of note names.
 
- Argument  : @array -  an array of note names.
+ Argument  : @array - An array of note names.
 
  Comments  : Expects to see a an array of MIDI::Simple style note names.
            : Inverts about the supplied $axis.
@@ -256,7 +256,7 @@ sub retrograde_inversion {
  Purpose   : Compute duration of a note.
  Returns   : Duration as an integer.
 
- Argument  : $dur_or_len - a string consisting of a numeric MIDI::Simple
+ Argument  : $dur_or_len - A string consisting of a numeric MIDI::Simple
            : style numeric duration spec ( e.g., d48, or d60 ) or length
            : spec ( e.g., qn or dhn )
 
@@ -292,7 +292,7 @@ sub dur {
 
  Returns   : Duration as an integer.
 
- Argument  : $dur_or_len - a string consisting of a numeric MIDI::Simple
+ Argument  : $dur_or_len - A string consisting of a numeric MIDI::Simple
            : style numeric duration spec ( e.g., d48, or d60 ) or length
            : spec ( e.g., qn or dhn )
 
@@ -322,8 +322,8 @@ sub tye {
  Purpose   : Augment duration of a note multiplying it by $ratio.
  Returns   : Duration as an integer.
 
- Argument  : $ratio      - an integer multiplier
-           : $dur_or_len - a string consisting of a numeric MIDI::Simple
+ Argument  : $ratio      - An integer multiplier
+           : $dur_or_len - A string consisting of a numeric MIDI::Simple
            : style numeric duration spec ( e.g., d48, or d60 ) or length
            : spec ( e.g., qn or dhn )
 
@@ -348,8 +348,8 @@ sub raugmentation {
  Purpose   : Diminish duration of a note dividing it by $ratio.
  Returns   : Duration as an integer.
 
- Argument  : $ratio      - an integer divisor
-           : $dur_or_len - a string consisting of a numeric MIDI::Simple
+ Argument  : $ratio      - An integer divisor
+           : $dur_or_len - A string consisting of a numeric MIDI::Simple
            : style numeric duration spec ( e.g., d48, or d60 ) or length
            : spec ( e.g., qn or dhn )
 
@@ -375,7 +375,7 @@ sub rdiminution {
            : (i.e., double it).
  Returns   : Duration as an integer.
 
- Argument  : $dur_or_len - a string consisting of a numeric MIDI::Simple
+ Argument  : $dur_or_len - A string consisting of a numeric MIDI::Simple
            : style numeric duration spec ( e.g., d48, or d60 ) or length
            : spec ( e.g., qn or dhn )
 
@@ -408,7 +408,7 @@ sub augmentation {
            : (i.e., halve it).
  Returns   : Duration as an integer.
 
- Argument  : $dur_or_len - a string consisting of a numeric MIDI::Simple
+ Argument  : $dur_or_len - A string consisting of a numeric MIDI::Simple
            : style numeric duration spec ( e.g., d48, or d60 ) or length
            : spec ( e.g., qn or dhn )
 
