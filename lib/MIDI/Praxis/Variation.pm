@@ -201,23 +201,24 @@ sub inversion {
     return () unless length $notes[0];
 
     my $center = -1;
-    my $inc = 0;
-    my $first = -1;
-    my $delta = 0;
+    my $inc    = 0;
+    my $first  = -1;
+    my $delta  = 0;
+    my $temp   = -1;
+
     my @transposed = ();
     my @ret = ();
-    my $foo = -1;
 
-    $center = note_name_to_number( $axis );
-    $first = note_name_to_number( $notes[0] );
-    $delta = $center - $first;
+    $center = note_name_to_number($axis);
+    $first  = note_name_to_number($notes[0]);
+    $delta  = $center - $first;
 
-    @transposed = transposition( $delta, @notes);
+    @transposed = transposition($delta, @notes);
 
     $inc = 0;
     for (@notes) {
-        $foo =  $transposed[$inc];
-        push @ret, (2 * $center - $foo);
+        $temp =  $transposed[$inc];
+        push @ret, (2 * $center - $temp);
         $inc++;
     }
 
