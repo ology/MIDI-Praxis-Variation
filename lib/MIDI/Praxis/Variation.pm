@@ -10,25 +10,25 @@ use MIDI::Simple;
 our $VERSION = '0.0500';
 
 BEGIN {
-	use Exporter ();
-	use vars qw (@ISA @EXPORT @EXPORT_OK);
-	@ISA       = qw (Exporter);
-	@EXPORT    = qw ();
- 	@EXPORT_OK = qw (
-		augmentation
-		diminution
-		dur
-		inversion
-		note_name_to_number
-		ntup
-		original
-		raugmentation
-		rdiminution
-		retrograde
-		retrograde_inversion
-		transposition
-		tye
-	);
+    use Exporter ();
+    use vars qw (@ISA @EXPORT @EXPORT_OK);
+    @ISA       = qw (Exporter);
+    @EXPORT    = qw ();
+    @EXPORT_OK = qw (
+        augmentation
+        diminution
+        dur
+        inversion
+        note_name_to_number
+        ntup
+        original
+        raugmentation
+        rdiminution
+        retrograde
+        retrograde_inversion
+        transposition
+        tye
+    );
 }
 
 =head1 SYNOPSIS
@@ -78,16 +78,16 @@ sub note_name_to_number($) {
 =cut
 
 sub original {
-	my @notes =  @_;
-	my @ret = ();
-	return () unless length $notes[0];
-	my $inc = 0;
-	for (@notes) {
-		push @ret, note_name_to_number( $notes[$inc] );
-		$inc++;
-	}
+    my @notes =  @_;
+    my @ret = ();
+    return () unless length $notes[0];
+    my $inc = 0;
+    for (@notes) {
+        push @ret, note_name_to_number( $notes[$inc] );
+        $inc++;
+    }
 
-	return @ret;
+    return @ret;
 }
 
 
@@ -104,12 +104,12 @@ sub original {
 =cut
 
 sub retrograde {
-	my @notes =  @_;
-	my @ret = ();
-	return () unless length $notes[0];
-	@ret = reverse original( @notes );
+    my @notes =  @_;
+    my @ret = ();
+    return () unless length $notes[0];
+    @ret = reverse original( @notes );
 
-	return @ret;
+    return @ret;
 }
 
 
@@ -129,21 +129,26 @@ sub retrograde {
            : example, 8 indicates 8 semitones up while -7 asks
            : for 7 semitones down. The array argument specifies
            : the notes to be transposed.
-					 
+                     
 =cut
 
 sub transposition {
-	my ($delta, @notes) = @_;
-	my @ret = ();
-	return () unless length $notes[0];
-	@ret = original(@notes);
-	my $inc = 0;
+    my ($delta, @notes) = @_;
 
-	for ( @notes ) {
-		$ret[$inc] += $delta;
-		$inc++;
-	}
-	return @ret;
+    my @ret = ();
+
+    return () unless length $notes[0];
+
+    @ret = original(@notes);
+
+    my $inc = 0;
+
+    for ( @notes ) {
+        $ret[$inc] += $delta;
+        $inc++;
+    }
+
+    return @ret;
 }
 
 
@@ -160,32 +165,37 @@ sub transposition {
  Comments  : Expects to see a MIDI::Simple style note name.
            : followed by an array of such names. These give
            : the axis of inversion and the notes to be inverted.
-					 
+                     
 =cut
 
 sub inversion {
-	my ($axis, @notes) = @_; # A note name followed by an array of note names
-	return () unless length $axis;
-	return () unless length $notes[0];
-	my $center = -1;
-	my $inc = 0;
-	my $first = -1;
-	my $delta = 0;
-	my @transposed = ();
-	my @ret = ();
-	my $foo = -1;
+    my ($axis, @notes) = @_; # A note name followed by an array of note names
 
-	$center = note_name_to_number( $axis );
-	$first = note_name_to_number( $notes[0] );
-	$delta = $center - $first;
-	@transposed = transposition( $delta, @notes);
-	$inc = 0;
-	for (@notes) {
-		$foo =  $transposed[$inc];
-		push @ret, (2 * $center - $foo);
-		$inc++;
-	}
-	return @ret;
+    return () unless length $axis;
+    return () unless length $notes[0];
+
+    my $center = -1;
+    my $inc = 0;
+    my $first = -1;
+    my $delta = 0;
+    my @transposed = ();
+    my @ret = ();
+    my $foo = -1;
+
+    $center = note_name_to_number( $axis );
+    $first = note_name_to_number( $notes[0] );
+    $delta = $center - $first;
+
+    @transposed = transposition( $delta, @notes);
+
+    $inc = 0;
+    for (@notes) {
+        $foo =  $transposed[$inc];
+        push @ret, (2 * $center - $foo);
+        $inc++;
+    }
+
+    return @ret;
 }
 
 
@@ -204,16 +214,19 @@ sub inversion {
 =cut
 
 sub retrograde_inversion {
-	my ($axis, @notes) = @_; # A note name followed by an array of note names
-	return () unless length $axis;
-	return () unless length $notes[0];
-	my @rev_notes = ();
-	my @ret = ();
+    my ($axis, @notes) = @_; # A note name followed by an array of note names
 
-	@rev_notes = reverse @notes;
-	@ret = inversion($axis, @rev_notes);
+    return () unless length $axis;
+    return () unless length $notes[0];
 
-	return @ret;
+    my @rev_notes = ();
+    my @ret = ();
+
+    @rev_notes = reverse @notes;
+
+    @ret = inversion($axis, @rev_notes);
+
+    return @ret;
 }
 
 
@@ -233,12 +246,13 @@ sub retrograde_inversion {
 =cut
 
 sub dur {
-	my ($tempo, $arg) = (MIDI::Simple::Tempo, @_); 
-	if($arg =~ m<^d(\d+)$>s) {   # numeric duration spec
-		return 0 + $1;
-	} elsif( exists( $MIDI::Simple::Length{$arg} )) {   # length spec
-		return 0 + ($tempo * $MIDI::Simple::Length{$arg});
-	}
+    my ($tempo, $arg) = (MIDI::Simple::Tempo, @_); 
+
+    if($arg =~ m<^d(\d+)$>s) {   # numeric duration spec
+        return 0 + $1;
+    } elsif (exists $MIDI::Simple::Length{$arg}) {   # length spec
+        return 0 + ($tempo * $MIDI::Simple::Length{$arg});
+    }
 }
 
 
@@ -261,17 +275,17 @@ sub dur {
 =cut
 
 sub tye {
-	my @dur_or_len = @_;
-		                                                                                            
-	return () unless length $dur_or_len[0];
-			                                                                                            
-	my $sum = 0;
-	my $inc = 0;
+    my @dur_or_len = @_;
+                                                                                                    
+    return () unless length $dur_or_len[0];
+                                                                                                        
+    my $sum = 0;
+    my $inc = 0;
 
-	for (@dur_or_len) {
-		$sum += dur($dur_or_len[$inc]);
-		$inc++;
-	}
+    for (@dur_or_len) {
+        $sum += dur($dur_or_len[$inc]);
+        $inc++;
+    }
 
     return $sum;
 }
@@ -294,11 +308,12 @@ sub tye {
 =cut
 
 sub raugmentation {
-	my ($ratio, $dur_or_len) = @_; 
-	return () unless (1 < $ratio);
-	return () unless length $dur_or_len;
-	
-	return dur($dur_or_len) * $ratio;
+    my ($ratio, $dur_or_len) = @_; 
+
+    return () unless (1 < $ratio);
+    return () unless length $dur_or_len;
+    
+    return dur($dur_or_len) * $ratio;
 }
 
 
@@ -320,13 +335,14 @@ sub raugmentation {
 =cut
 
 sub rdiminution {
-	my ($ratio, $dur_or_len) = @_; 
-	return () unless (1 < $ratio);
-	return () unless length $dur_or_len;
+    my ($ratio, $dur_or_len) = @_; 
 
-	my $ret =  sprintf( "%.0f", (dur($dur_or_len) / $ratio));
-	
-	return $ret;
+    return () unless (1 < $ratio);
+    return () unless length $dur_or_len;
+
+    my $ret =  sprintf( "%.0f", (dur($dur_or_len) / $ratio));
+    
+    return $ret;
 }
 
 
@@ -347,21 +363,21 @@ sub rdiminution {
 =cut
 
 sub augmentation {
-	my @dur_or_len = @_;
+    my @dur_or_len = @_;
 
-	return () unless length $dur_or_len[0];
-	
-	my $inc = 0;
-	my @ret = ();
-	for (@dur_or_len) {
-		my $elem = "d";
+    return () unless length $dur_or_len[0];
+    
+    my $inc = 0;
+    my @ret = ();
+    for (@dur_or_len) {
+        my $elem = "d";
 
-		$elem .= raugmentation(2, $dur_or_len[$inc]);
-		push @ret, $elem;
-		$inc++;
-	}
+        $elem .= raugmentation(2, $dur_or_len[$inc]);
+        push @ret, $elem;
+        $inc++;
+    }
 
-	return @ret;
+    return @ret;
 }
 
 
@@ -383,21 +399,21 @@ sub augmentation {
 =cut
 
 sub diminution {
-	my @dur_or_len = @_;
+    my @dur_or_len = @_;
 
-	return () unless length $dur_or_len[0];
-	
-	my $inc = 0;
-	my @ret = ();
-	for (@dur_or_len) {
-		my $elem = "d";
+    return () unless length $dur_or_len[0];
+    
+    my $inc = 0;
+    my @ret = ();
+    for (@dur_or_len) {
+        my $elem = "d";
 
-		$elem .= rdiminution(2, $dur_or_len[$inc]);
-		push @ret, $elem;
-		$inc++;
-	}
+        $elem .= rdiminution(2, $dur_or_len[$inc]);
+        push @ret, $elem;
+        $inc++;
+    }
 
-	return @ret;
+    return @ret;
 }
 
 
@@ -421,22 +437,22 @@ sub diminution {
 =cut
 
 sub ntup {
-	my $nelem = shift;
-	my @tmpar = @_;
-	my @ret = ();
-	my $index=0;
+    my $nelem = shift;
+    my @tmpar = @_;
+    my @ret = ();
+    my $index=0;
 
-	unless ( @tmpar < $nelem ) {
-		for ($index=0; $index <= $#tmpar-$nelem+1; $index++) {
-			push @ret, @tmpar[$index .. $index+$nelem-1];
-		}
-	}
+    unless ( @tmpar < $nelem ) {
+        for ($index=0; $index <= $#tmpar-$nelem+1; $index++) {
+            push @ret, @tmpar[$index .. $index+$nelem-1];
+        }
+    }
 
-	if ( @tmpar == $nelem ) {
-		@ret = @_;
-	}
+    if ( @tmpar == $nelem ) {
+        @ret = @_;
+    }
 
-	return @ret;
+    return @ret;
 }
 
 =head1 SEE ALSO
