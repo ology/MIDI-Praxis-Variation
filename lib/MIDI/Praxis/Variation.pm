@@ -217,7 +217,7 @@ sub inversion {
 
     $inc = 0;
     for (@notes) {
-        $temp =  $transposed[$inc];
+        $temp = $transposed[$inc];
         push @ret, (2 * $center - $temp);
         $inc++;
     }
