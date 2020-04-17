@@ -58,9 +58,10 @@ our %EXPORT_TAGS = (all => [qw(
   my $x = dur('qn');
   @x = inversion('B4', @notes);
   $x = note_name_to_number('C5');
-  @x = notes2nums(@notes); # Alias for original()
+  $x = note2num('C5'); # Alias for note_name_to_number()
   @x = ntup(2, @notes);
   @x = original(@notes);
+  @x = notes2nums(@notes); # Alias for original()
   $x = raugmentation(1.5, 'qn');
   $x = rdiminution(1.5, 'qn');
   @x = retrograde(@notes);
