@@ -74,7 +74,7 @@ array of MIDI note numbers or duration values.
 
 =head1 FUNCTIONS
 
-=head2 note_name_to_number
+=head2 note_name_to_number, note2num
 
   $x = note_name_to_number($note_name);
 
@@ -85,6 +85,8 @@ Returns: An equivalent MIDI note number or -1 if not known.
 Expects to see a MIDI::Simple style note name.
 
 =cut
+
+sub note2num { note_name_to_number(@_) }
 
 sub note_name_to_number {
     my ($in) = @_;
