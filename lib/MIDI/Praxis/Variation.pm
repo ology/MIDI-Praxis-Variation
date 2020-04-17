@@ -100,7 +100,7 @@ sub note_name_to_number {
 
     my $note_number = -1;
 
-    if ($in =~ /^([A-Za-z]+)(\d+)/s) {    # E.g.,  "C3", "As4"
+    if ($in =~ /^([A-Za-z]+)(\d+)/s) {
         $note_number = $MIDI::Simple::Note{$1} + $2 * 12
           if exists $MIDI::Simple::Note{$1};
     }
