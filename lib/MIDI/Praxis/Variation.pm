@@ -17,9 +17,10 @@ our @EXPORT = qw(
     dur
     inversion
     note_name_to_number
-    notes2nums
+    note2num
     ntup
     original
+    notes2nums
     raugmentation
     rdiminution
     retrograde
@@ -33,9 +34,10 @@ our %EXPORT_TAGS = (all => [qw(
     dur
     inversion
     note_name_to_number
-    notes2nums
+    note2num
     ntup
     original
+    notes2nums
     raugmentation
     rdiminution
     retrograde
