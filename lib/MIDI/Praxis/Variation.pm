@@ -354,58 +354,65 @@ sub tye {
 
 =head2 raugmentation
 
-  $x = raugmentation($ratio, $dur_or_len);
+  $x = raugmentation($ratio, @dur_or_len);
 
-Augment duration of a note multiplying it by $ratio.
+Augment duration of notes, multiplying them by $ratio.
 
 Returns: Duration as an integer.
 
 Argument:
 
-  $ratio - An integer multiplier $dur_or_len - A string consisting of
-  a numeric MIDI::Simple style numeric duration spec (e.g. d48, or
-  d60) or length spec (e.g. qn or dhn)
+  $ratio - An integer multiplier
 
-Note that string input is expected for $dur_or_len and
-integer output is returned.
+  @dur_or_len - A list of MIDI::Simple style numeric duration specs
+  (e.g. d48, or d60) or length specs (e.g. qn or dhn)
 
 =cut
 
 sub raugmentation {
-    my ($ratio, $dur_or_len) = @_;
+    my ($ratio, @dur_or_len) = @_;
 
-    return () unless $ratio && 1 < $ratio && $dur_or_len;
+    return () unless $ratio && 1 < $ratio && @dur_or_len;
 
-    return dur($dur_or_len) * $ratio;
+    my $sum = 0;
+
+    for my $dura (@dur_or_len) {
+        $sum += dur($dura) * $ratio;
+    }
+
+    return $sum;
 }
 
 
 =head2 rdiminution
 
-  $x = rdiminution($ratio, $dur_or_len);
+  $x = rdiminution($ratio, @dur_or_len);
 
-Diminish duration of a note dividing it by $ratio.
+Diminish duration of notes, dividing them by $ratio.
 
 Returns: Duration as an integer.
 
 Argument:
 
-  $ratio - An integer divisor $dur_or_len - A string consisting of a
-  numeric MIDI::Simple style numeric duration spec (e.g. d48, or d60)
-  or length spec (e.g. qn or dhn)
+  $ratio - An integer divisor
 
-Note that string input is expected for $dur_or_len and
-integer output is returned. This integer is the approximate result of
-dividing the original duration by $ratio.
+  @dur_or_len - A list of style numeric duration specs (e.g. d48, or
+  d60) or length specs (e.g. qn or dhn)
 
 =cut
 
 sub rdiminution {
-    my ($ratio, $dur_or_len) = @_;
+    my ($ratio, @dur_or_len) = @_;
 
-    return () unless $ratio && 1 < $ratio && $dur_or_len;
+    return () unless $ratio && 1 < $ratio && @dur_or_len;
 
-    return sprintf '%.0f', dur($dur_or_len) / $ratio;
+    my $sum = 0;
+
+    for my $dura (@dur_or_len) {
+        $sum += sprintf '%.0f', dur($dura) / $ratio;
+    }
+
+    return $sum;
 }
 
 
