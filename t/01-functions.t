@@ -144,8 +144,16 @@ is_deeply \@got, $expect, 'retrograde';
 $expect = [];
 is_deeply \@got, $expect, 'retrograde_inversion';
 
-@got = retrograde_inversion('B4', @notes);
-$expect = [59, 62, 66];
+@got = retrograde_inversion('C4', @notes);
+$expect = [48, 51, 55];
+is_deeply \@got, $expect, 'retrograde_inversion';
+
+@got = retrograde_inversion('C5', @notes);
+$expect = [60, 63, 67];
+is_deeply \@got, $expect, 'retrograde_inversion';
+
+@got = retrograde_inversion('D5', @notes);
+$expect = [62, 65, 69];
 is_deeply \@got, $expect, 'retrograde_inversion';
 
 @got = transposition();
