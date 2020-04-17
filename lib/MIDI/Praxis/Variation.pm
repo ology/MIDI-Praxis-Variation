@@ -74,9 +74,9 @@ our %EXPORT_TAGS = (all => [qw(
 
 =head1 DESCRIPTION
 
-Melodic variation techniques, as implemented here, expect an array of
-MIDI::Simple style note names or durations as input. They return an
-array of MIDI note numbers or duration values.
+Melodic variation techniques, as implemented here, expect MIDI::Simple
+style note names or durations as input. They return an array of MIDI
+note numbers or duration values.
 
 =head1 FUNCTIONS
 
