@@ -73,6 +73,10 @@ $got = note_name_to_number('C5');
 $expect = 60;
 is $got, $expect, 'note_name_to_number';
 
+$got = note2num('C5');
+$expect = 60;
+is $got, $expect, 'note2num';
+
 @got = ntup();
 $expect = [];
 is_deeply \@got, $expect, 'ntup';
