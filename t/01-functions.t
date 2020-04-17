@@ -100,6 +100,10 @@ is_deeply \@got, $expect, 'original';
 $expect = [60, 64, 67];
 is_deeply \@got, $expect, 'original';
 
+@got = notes2nums(@notes);
+$expect = [60, 64, 67];
+is_deeply \@got, $expect, 'notes2nums';
+
 $got = raugmentation();
 $expect = undef;
 is $got, $expect, 'raugmentation';
