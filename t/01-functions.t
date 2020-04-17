@@ -192,4 +192,8 @@ $got = tye('qn', 'qn');
 $expect = 96 * 2;
 is $got, $expect, 'tye';
 
+$got = tie_durations('qn', 'qn');
+$expect = 96 * 2;
+is $got, $expect, 'tie_durations';
+
 done_testing();
