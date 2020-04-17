@@ -105,6 +105,7 @@ sub note_name_to_number {
 =head2 original, notes2nums
 
   @x = original(@array);
+  @x = notes2nums(@array);
 
 Map note names to MIDI note numbers.
 
