@@ -17,6 +17,7 @@ our @EXPORT = qw(
     dur
     inversion
     note_name_to_number
+    notes2nums
     ntup
     original
     raugmentation
@@ -32,6 +33,7 @@ our %EXPORT_TAGS = (all => [qw(
     dur
     inversion
     note_name_to_number
+    notes2nums
     ntup
     original
     raugmentation
@@ -54,6 +56,7 @@ our %EXPORT_TAGS = (all => [qw(
   my $x = dur('qn');
   @x = inversion('B4', @notes);
   $x = note_name_to_number('C5');
+  @x = notes2nums(@notes); # Alias for original()
   @x = ntup(2, @notes);
   @x = original(@notes);
   $x = raugmentation(1.5, 'qn');
@@ -99,7 +102,7 @@ sub note_name_to_number {
 }
 
 
-=head2 original
+=head2 original, notes2nums
 
   @x = original(@array);
 
@@ -112,10 +115,12 @@ Argument:
   @array - An array of note names.
 
 Expects to see a an array of MIDI::Simple style note names
-e.g. C5, Fs6, Bf3. It returns equivilent MIDI note numbers leaving the
+e.g. C5, Fs6, Bf3. It returns equivalent MIDI note numbers leaving the
 array of note names untouched.
 
 =cut
+
+sub notes2nums { original(@_) }
 
 sub original {
     my @notes =  @_;
@@ -387,7 +392,7 @@ Argument:
   or length spec (e.g. qn or dhn)
 
 Note that string input is expected for $dur_or_len and
-integer output is returned. This integer is the aproximate result of
+integer output is returned. This integer is the approximate result of
 dividing the original duration by $ratio.
 
 =cut
