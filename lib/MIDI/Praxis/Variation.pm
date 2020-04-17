@@ -374,8 +374,7 @@ integer output is returned.
 sub raugmentation {
     my ($ratio, $dur_or_len) = @_;
 
-    return () unless $ratio && 1 < $ratio;
-    return () unless $dur_or_len && length $dur_or_len;
+    return () unless $ratio && 1 < $ratio && $dur_or_len;
 
     return dur($dur_or_len) * $ratio;
 }
