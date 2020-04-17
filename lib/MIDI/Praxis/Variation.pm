@@ -27,6 +27,7 @@ our @EXPORT = qw(
     retrograde_inversion
     transposition
     tye
+    tie_durations
 );
 our %EXPORT_TAGS = (all => [qw(
     augmentation
@@ -44,6 +45,7 @@ our %EXPORT_TAGS = (all => [qw(
     retrograde_inversion
     transposition
     tye
+    tie_durations
 )] );
 
 =head1 SYNOPSIS
@@ -68,6 +70,7 @@ our %EXPORT_TAGS = (all => [qw(
   @x = retrograde_inversion('B4', @notes);
   @x = transposition(@notes);
   $x = tye(@dura);
+  $x = tie_durations(@dura); # Alias for tye()
 
 =head1 DESCRIPTION
 
@@ -80,6 +83,7 @@ array of MIDI note numbers or duration values.
 =head2 note_name_to_number, note2num
 
   $x = note_name_to_number($note_name);
+  $x = note2num($note_name);
 
 Map a single note name to a MIDI note number.
 
@@ -319,9 +323,10 @@ sub dur {
 }
 
 
-=head2 tye
+=head2 tye, tie_durations
 
   $x = tye(@dur_or_len);
+  $x = tie_durations(@dur_or_len);
 
 Compute the sum of the durations of notes. As with a tie in
 music notation. This odd spelling is used to avoid conflict with the
@@ -338,6 +343,8 @@ Argument:
 Note that string list input is expected and integer output is returned.
 
 =cut
+
+sub tie_durations { tye(@_) }
 
 sub tye {
     my @dur_or_len = @_;
