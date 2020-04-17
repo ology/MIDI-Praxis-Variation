@@ -123,7 +123,7 @@ array of note names untouched.
 sub notes2nums { original(@_) }
 
 sub original {
-    my @notes =  @_;
+    my @notes = @_;
 
     return () unless @notes;
 
