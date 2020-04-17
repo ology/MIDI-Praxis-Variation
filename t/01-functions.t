@@ -49,12 +49,16 @@ is $got, $expect, 'dur';
 $expect = [];
 is_deeply \@got, $expect, 'inversion';
 
+@got = inversion('C4', @notes);
+$expect = [48, 44, 41];
+is_deeply \@got, $expect, 'inversion';
+
 @got = inversion('C5', @notes);
 $expect = [60, 56, 53];
 is_deeply \@got, $expect, 'inversion';
 
-@got = inversion('C4', @notes);
-$expect = [48, 44, 41];
+@got = inversion('D5', @notes);
+$expect = [62, 58, 55];
 is_deeply \@got, $expect, 'inversion';
 
 $got = note_name_to_number();
