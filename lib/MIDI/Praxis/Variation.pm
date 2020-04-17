@@ -409,10 +409,10 @@ sub rdiminution {
     my $sum = 0;
 
     for my $dura (@dur_or_len) {
-        $sum += sprintf '%.0f', dur($dura) / $ratio;
+        $sum += dur($dura) / $ratio;
     }
 
-    return $sum;
+    return sprintf '%.0f', $sum;
 }
 
 
