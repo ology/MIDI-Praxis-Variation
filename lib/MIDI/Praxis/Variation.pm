@@ -89,8 +89,6 @@ Map a single note name to a MIDI note number.
 
 Returns: An equivalent MIDI note number or -1 if not known.
 
-Expects to see a MIDI::Simple style note name.
-
 =cut
 
 sub note2num { note_name_to_number(@_) }
@@ -124,10 +122,6 @@ Argument:
 
   @array - An array of note names.
 
-Expects to see a an array of MIDI::Simple style note names
-e.g. C5, Fs6, Bf3. It returns equivalent MIDI note numbers leaving the
-array of note names untouched.
-
 =cut
 
 sub notes2nums { original(@_) }
@@ -154,8 +148,6 @@ Returns: The retrograde equivalent array as MIDI note numbers.
 Argument:
 
   @array - An array of note names.
-
-Expects to see a an array of MIDI::Simple style note names.
 
 =cut
 
@@ -266,7 +258,6 @@ Argument:
 
   @array - An array of note names.
 
-Expects to see a an array of MIDI::Simple style note names.
 Inverts about the supplied $axis.
 
 =cut
