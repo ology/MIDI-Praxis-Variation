@@ -222,9 +222,9 @@ Arguments:
   $axis  - A note to use as the axis of this inversion.
   @array - An array of note names.
 
-Expects to see a MIDI::Simple style note name followed by
-an array of such names. These give the axis of inversion and the notes
-to be inverted.
+Expects to see a MIDI::Simple style note name followed by an array of
+such names. These give the axis of inversion and the notes to be
+inverted.
 
 =cut
 
@@ -263,7 +263,7 @@ Inverts about the supplied $axis.
 =cut
 
 sub retrograde_inversion {
-    my ($axis, @notes) = @_; # A note name followed by an array of note names
+    my ($axis, @notes) = @_;
 
     return () unless $axis && @notes;
 
@@ -303,7 +303,7 @@ sub dur {
 
     my $dur = 0;
 
-    if ($arg =~ /^d(\d+)$/) {   # numeric duration spec
+    if ($arg =~ /^d(\d+)$/) {
         $dur = 0 + $1;
     }
     elsif (exists $MIDI::Simple::Length{$arg}) {   # length spec
@@ -356,7 +356,7 @@ sub tye {
 
   $x = raugmentation($ratio, @dur_or_len);
 
-Augment duration of notes, multiplying them by $ratio.
+Augment duration of notes, multiplying them by B<$ratio>.
 
 Returns: Duration as an integer.
 
@@ -388,7 +388,7 @@ sub raugmentation {
 
   $x = rdiminution($ratio, @dur_or_len);
 
-Diminish duration of notes, dividing them by $ratio.
+Diminish duration of notes, dividing them by B<$ratio>.
 
 Returns: Duration as an integer.
 
@@ -430,8 +430,8 @@ Argument:
   style numeric duration specs (e.g. d48, or d60) or length specs
   (e.g. qn or dhn)
 
-Note that string input is expected for @dur_or_len and
-integer output is returned.
+Note that string input is expected for B<@dur_or_len> and integer
+output is returned.
 
 =cut
 
@@ -466,9 +466,9 @@ Argument:
   style numeric duration specs (e.g. d48, or d60) or length specs
   (e.g. qn or dhn)
 
-Note that string input is expected for @dur_or_len and
-integer output is returned. This integer is the approximate result of
-dividing the original durations by 2.
+Note that string input is expected for B<@dur_or_len> and integer
+output is returned. This integer is the approximate result of dividing
+the original durations by 2.
 
 =cut
 
@@ -493,21 +493,21 @@ sub diminution {
 
   @x = ntup($nelem, @subject);
 
-Catalog tuples of length $nelem in @subject.
+Catalog tuples of length B<$nelem> in B<@subject>.
 
-Returns: An array of tuples of length $nelem.
+Returns: An array of tuples of length B<$nelem>.
 
 Argument:
 
   $nelem   - Number of elements in each tuple
   @subject - Subject array to be scanned for tuples
 
-Scan begins with the 0th element of @subject looking for a
-tuple of length $nelem. Scan advances by one until it has found all
-tuples of length $nelem. For example: given the array
-@ar = qw(1 2 3 4) and $nelem = 2, then ntup(2, @ar) would return
-@ret = qw(1 2 2 3 3 4). Note that for $nelem == any of -1, 0, 5 using
-the same @ar as its subject array ntup returns ();
+Scan begins with the 0th element of B<@subject> looking for a tuple of
+length B<$nelem>. Scan advances by one until it has found all tuples
+of length B<$nelem>. For example: given the array C<@ar = qw(1 2 3 4)>
+and C<$nelem = 2>, then C<ntup(2, @ar)> would return
+C<qw(1 2 2 3 3 4)>. Note that if B<$nelem> equals -1, 0, or a value
+greater than the size of B<@subject>, this function will return C<()>;
 
 =cut
 
