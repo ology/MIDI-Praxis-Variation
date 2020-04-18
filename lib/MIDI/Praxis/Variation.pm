@@ -331,8 +331,6 @@ Argument:
   style numeric duration specs (e.g. d48, or d60) or length specs
   (e.g. qn or dhn)
 
-Note that string list input is expected and integer output is returned.
-
 =cut
 
 sub tie_durations { tye(@_) }
