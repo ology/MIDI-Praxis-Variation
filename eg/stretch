@@ -13,6 +13,7 @@ my $bpm   = shift || 120;
 my $patch = shift || 4; # Treble patch
 
 my $size     = 4; # Motif duration size in quarter notes
+my $t_max    = 64; # Number of treble repetitions
 my $t_octave = 4; # Treble octave
 my $b_patch  = 35; #42;
 
@@ -44,7 +45,7 @@ sub treble {
 
     my @scale = get_scale_MIDI('C', $t_octave, 'pentatonic');
 
-    for my $n (0 .. 63) {
+    for my $n (0 .. $t_max - 1) {
         my $note = $scale[int rand @scale];
         push @notes, $note;
 
@@ -62,7 +63,7 @@ sub bass {
     my @transposed = transposition(-24, @notes);
     my @stretched  = augmentation(@$motif);
 
-    for my $n (0 .. 31) {
+    for my $n (0 .. $t_max / 2 - 1) {
         $score->n($stretched[$n % @stretched], $transposed[$n % @transposed]);
     }
 }
