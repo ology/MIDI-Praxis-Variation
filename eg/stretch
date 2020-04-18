@@ -23,10 +23,7 @@ my $sizes = { %MIDI::Simple::Length }; # Named durations used by the counter
 my $score = MIDI::Util::setup_score(bpm => $bpm, patch => $patch);
 
 # Rhythmic motif used by treble and bass
-my $mdp = Music::Duration::Partition->new(
-    size => $size,
-    pool => \@pool,
-);
+my $mdp = Music::Duration::Partition->new(size => $size, pool => \@pool);
 my $motif = $mdp->motif;
 use Data::Dumper; print Dumper $motif; # Show the generated motif
 
