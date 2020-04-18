@@ -288,9 +288,8 @@ Returns: Duration as an integer.
 
 Argument:
 
-  $dur_or_len - A string consisting of a numeric MIDI::Simple style
-  numeric duration spec (e.g. d48, or d60) or length spec (e.g. qn or
-  dhn)
+  $dur_or_len - A string consisting of a MIDI::Simple style numeric
+  duration spec (e.g. d48, or d60) or length spec (e.g. qn or dhn)
 
 Note that string input is expected and integer output is returned.
 
@@ -327,9 +326,9 @@ Returns: Duration as an integer.
 
 Argument:
 
-  @dur_or_len - A list of strings consisting of numeric MIDI::Simple
-  style numeric duration specs (e.g. d48, or d60) or length specs
-  (e.g. qn or dhn)
+  @dur_or_len - A list of strings consisting of MIDI::Simple style
+  numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
+  or dhn)
 
 =cut
 
@@ -394,8 +393,8 @@ Argument:
 
   $ratio - An integer divisor
 
-  @dur_or_len - A list of style numeric duration specs (e.g. d48, or
-  d60) or length specs (e.g. qn or dhn)
+  @dur_or_len - A list of MIDI::Simple style numeric duration specs
+  (e.g. d48, or d60) or length specs (e.g. qn or dhn)
 
 =cut
 
@@ -424,9 +423,9 @@ Returns: Duration as an integer.
 
 Argument:
 
-  @dur_or_len - A list of strings consisting of numeric MIDI::Simple
-  style numeric duration specs (e.g. d48, or d60) or length specs
-  (e.g. qn or dhn)
+  @dur_or_len - A list of strings consisting of MIDI::Simple style
+  numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
+  or dhn)
 
 =cut
 
@@ -457,9 +456,9 @@ Returns: Duration as an integer.
 
 Argument:
 
-  @dur_or_len - A list of strings consisting of numeric MIDI::Simple
-  style numeric duration specs (e.g. d48, or d60) or length specs
-  (e.g. qn or dhn)
+  @dur_or_len - A list of strings consisting of MIDI::Simple style
+  numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
+  or dhn)
 
 The returned integer is the approximate result of dividing the
 original durations by 2.
