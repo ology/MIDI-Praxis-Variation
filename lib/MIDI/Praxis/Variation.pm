@@ -428,9 +428,6 @@ Argument:
   style numeric duration specs (e.g. d48, or d60) or length specs
   (e.g. qn or dhn)
 
-Note that string input is expected for B<@dur_or_len> and integer
-output is returned.
-
 =cut
 
 sub augmentation {
@@ -464,9 +461,8 @@ Argument:
   style numeric duration specs (e.g. d48, or d60) or length specs
   (e.g. qn or dhn)
 
-Note that string input is expected for B<@dur_or_len> and integer
-output is returned. This integer is the approximate result of dividing
-the original durations by 2.
+The returned integer is the approximate result of dividing the
+original durations by 2.
 
 =cut
 
