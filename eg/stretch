@@ -12,6 +12,7 @@ use Music::Scales;
 my $t_max = shift || 64; # Number of treble repetitions
 my $bpm   = shift || 120; # Beats per minute
 my $patch = shift || 4; # Treble patch
+my @pool  = @ARGV ? @ARGV : qw/ hn qn en /;
 
 my $size     = 4; # Motif duration size in quarter notes
 my $t_octave = 4; # Treble octave
@@ -24,7 +25,7 @@ my $score = MIDI::Util::setup_score(bpm => $bpm, patch => $patch);
 # Rhythmic motif used by treble and bass
 my $mdp = Music::Duration::Partition->new(
     size => $size,
-    pool => [qw/ hn qn en /],
+    pool => \@pool,
 );
 my $motif = $mdp->motif;
 use Data::Dumper; print Dumper $motif; # Show the generated motif
