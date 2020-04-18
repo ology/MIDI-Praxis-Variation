@@ -17,11 +17,11 @@ my $size     = 4; # Motif duration size in quarter notes
 my $t_octave = 4; # Treble octave
 my $b_patch  = 35; #42;
 
-my $sizes = { %MIDI::Simple::Length }; # Global hashref of named durations used by the counter
+my $sizes = { %MIDI::Simple::Length }; # Named durations used by the counter
 
 my $score = MIDI::Util::setup_score(bpm => $bpm, patch => $patch);
 
-# Global rhythmic motif used by treble and bass
+# Rhythmic motif used by treble and bass
 my $mdp = Music::Duration::Partition->new(
     size => $size,
     pool => [qw/ hn qn en /],
@@ -29,9 +29,9 @@ my $mdp = Music::Duration::Partition->new(
 my $motif = $mdp->motif;
 use Data::Dumper; print Dumper $motif; # Show the generated motif
 
-my @notes; # Global list of accumulated treble notes
+my @notes; # List of accumulated treble notes
 
-my $count = 0; # Global duration counter used by the drums
+my $count = 0; # Duration counter used by the drums
 
 $score->synch(
     \&treble,
