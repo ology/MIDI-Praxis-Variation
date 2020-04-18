@@ -9,11 +9,11 @@ use MIDI::Util;
 use Music::Duration::Partition;
 use Music::Scales;
 
+my $t_max = shift || 64; # Number of treble repetitions
 my $bpm   = shift || 120; # Beats per minute
 my $patch = shift || 4; # Treble patch
 
 my $size     = 4; # Motif duration size in quarter notes
-my $t_max    = 64; # Number of treble repetitions
 my $t_octave = 4; # Treble octave
 my $b_patch  = 35; #42;
 
