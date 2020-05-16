@@ -8,6 +8,8 @@ Revision history for MIDI::Praxis::Variation
     - Improve documentation.
     - Add tests!
 
+~
+
 0.05 Fri Sep 30 13:01:46 EDT 2005
     - Added prerequisite module 'MIDI::Simple' => '0.81' to Makefile.PL
 
