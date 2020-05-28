@@ -1,6 +1,8 @@
 Revision history for MIDI::Praxis::Variation
 
 {{$NEXT}}
+
+0.0600 2020-05-28 09:15:09
     - Change from Gnu to the Artistic license.
     - Clean up distribution files for dzil.
     - Significantly refactor code.
