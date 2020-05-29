@@ -2,6 +2,7 @@ Revision history for MIDI::Praxis::Variation
 
 {{$NEXT}}
     - Improve documentation.
+    - Add a couple tests.
 
 0.0600 2020-05-28 09:15:09
     - Change from Gnu to the Artistic license.
