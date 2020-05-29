@@ -387,9 +387,8 @@ sub rdiminution {
 
   @x = augmentation(@dur_or_len);
 
-Augment duration of notes multiplying them by 2, (i.e. double).
-
-Returns: Duration list.
+Augment duration of notes multiplying them by 2, (i.e. double) and
+return each in an array reference.
 
 Argument:
 
@@ -420,18 +419,14 @@ sub augmentation {
 
   @x = diminution(@dur_or_len);
 
-Diminish durations of notes dividing them by 2, (i.e. halve).
-
-Returns: Duration list.
+Diminish durations of notes dividing them by 2, (i.e. halve) and
+return each in an array reference.
 
 Argument:
 
   @dur_or_len - A list of strings consisting of MIDI tick
   numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
   or dhn)
-
-The returned integer is the approximate result of dividing the
-original durations by 2.
 
 =cut
 
