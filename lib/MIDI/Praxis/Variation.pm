@@ -5,7 +5,7 @@ package MIDI::Praxis::Variation;
 use strict;
 use warnings;
 
-our $VERSION = '0.0600';
+our $VERSION = '0.0601';
 
 use MIDI::Simple;
 
