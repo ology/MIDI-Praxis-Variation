@@ -419,7 +419,7 @@ sub rdiminution {
 
 Augment duration of notes multiplying them by 2, (i.e. double).
 
-Returns: Duration as an integer.
+Returns: Duration list.
 
 Argument:
 
@@ -452,7 +452,7 @@ sub augmentation {
 
 Diminish durations of notes dividing them by 2, (i.e. halve).
 
-Returns: Duration as an integer.
+Returns: Duration list.
 
 Argument:
 
