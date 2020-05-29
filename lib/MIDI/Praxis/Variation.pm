@@ -359,7 +359,7 @@ Returns: Duration as an integer.
 
 Argument:
 
-  $ratio - An integer multiplier
+  $ratio - An integer multiplier greater than 1
 
   @dur_or_len - A list of MIDI::Simple style numeric duration specs
   (e.g. d48, or d60) or length specs (e.g. qn or dhn)
@@ -391,7 +391,7 @@ Returns: Duration as an integer.
 
 Argument:
 
-  $ratio - An integer divisor
+  $ratio - An integer divisor less than 1
 
   @dur_or_len - A list of MIDI::Simple style numeric duration specs
   (e.g. d48, or d60) or length specs (e.g. qn or dhn)
