@@ -75,9 +75,8 @@ our %EXPORT_TAGS = (all => [qw(
 =head1 DESCRIPTION
 
 Melodic variation techniques, as implemented here, expect MIDI::Simple
-style note names or durations as input. They return an array of MIDI
-note numbers or duration values in ticks (where one quarter note = 96
-ticks).
+style note names or durations as input. They return MIDI note numbers
+or duration values in ticks (where one quarter note = 96 ticks).
 
 =head1 FUNCTIONS
 
@@ -86,9 +85,8 @@ ticks).
   $x = note_name_to_number($note_name);
   $x = note2num($note_name);
 
-Map a single note name to a MIDI note number.
-
-Returns: An equivalent MIDI note number or -1 if not known.
+Map a single note name to an equivalent MIDI note number (or -1 if not
+known).
 
 =cut
 
@@ -162,6 +160,7 @@ Form the transposition of an array of notes or MIDI note numbers.
 Arguments:
 
   $distance - An integer giving distance and direction.
+
   @array    - An array of note names OR MIDI note numbers.
 
 For example, 8 indicates 8 semitones up while -7 asks for 7 semitones
@@ -232,7 +231,7 @@ sub inversion {
 
 Form the retrograde inversion of an array of notes.
 
-Argument:
+Arguments:
 
   $axis  - A note to use as the axis of this inversion.
 
@@ -264,7 +263,7 @@ sub retrograde_inversion {
 
 Compute duration of a note in MIDI ticks.
 
-Argument:
+Arguments:
 
   $dur_or_len - A string consisting of a MIDI tick numeric
   duration spec (e.g. d48, or d60) or length spec (e.g. qn or dhn)
@@ -298,7 +297,7 @@ Compute the sum of the durations of notes, as with a tie in
 music notation. (The odd spelling is used to avoid conflict with the
 perl reserved word tie.)
 
-Argument:
+Arguments:
 
   @dur_or_len - A list of strings consisting of MIDI tick
   numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
@@ -329,7 +328,7 @@ sub tye {
 
 Augment duration of notes, multiplying them by B<$ratio>.
 
-Argument:
+Arguments:
 
   $ratio - Multiplier
 
@@ -359,7 +358,7 @@ sub raugmentation {
 
 Diminish duration of notes, dividing them by B<$ratio>.
 
-Argument:
+Arguments:
 
   $ratio - Divisor
 
@@ -390,7 +389,7 @@ sub rdiminution {
 Augment duration of notes multiplying them by 2, (i.e. double) and
 return each in an array reference.
 
-Argument:
+Arguments:
 
   @dur_or_len - A list of strings consisting of MIDI tick
   numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
@@ -422,7 +421,7 @@ sub augmentation {
 Diminish durations of notes dividing them by 2, (i.e. halve) and
 return each in an array reference.
 
-Argument:
+Arguments:
 
   @dur_or_len - A list of strings consisting of MIDI tick
   numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
@@ -453,7 +452,7 @@ sub diminution {
 
 Catalog and return tuples of length B<$nelem> in B<@subject>.
 
-Argument:
+Arguments:
 
   $nelem   - Number of elements in each tuple
 
