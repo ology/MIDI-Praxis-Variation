@@ -34,9 +34,11 @@ my $count = 0; # Duration counter used by the drums
 
 $score->synch(
     \&treble,
-    \&bass,
     \&drums,
+    \&bass,
 );
+
+$score->n('wn', 'C');
 
 $score->write_score("$0.mid");
 
