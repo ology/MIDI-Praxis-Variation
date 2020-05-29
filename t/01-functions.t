@@ -124,6 +124,10 @@ $got = raugmentation(1.5, 'qn');
 $expect = 144;
 is $got, $expect, 'raugmentation';
 
+$got = raugmentation(2, 'qn');
+$expect = 192;
+is $got, $expect, 'raugmentation';
+
 $got = raugmentation(1.5, 'qn', 'qn');
 $expect = 288;
 is $got, $expect, 'raugmentation';
@@ -142,6 +146,10 @@ is $got, $expect, 'rdiminution';
 
 $got = rdiminution(1.5, 'qn');
 $expect = 64;
+is $got, $expect, 'rdiminution';
+
+$got = rdiminution(2, 'qn');
+$expect = 48;
 is $got, $expect, 'rdiminution';
 
 $got = rdiminution(1.5, 'qn', 'qn');
