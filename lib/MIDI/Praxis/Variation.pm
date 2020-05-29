@@ -355,11 +355,11 @@ sub tye {
 
 Augment duration of notes, multiplying them by B<$ratio>.
 
-Returns: Duration as an integer.
+Returns: Duration number
 
 Argument:
 
-  $ratio - An integer multiplier greater than 1
+  $ratio - Multiplier
 
   @dur_or_len - A list of MIDI::Simple style numeric duration specs
   (e.g. d48, or d60) or length specs (e.g. qn or dhn)
@@ -387,11 +387,11 @@ sub raugmentation {
 
 Diminish duration of notes, dividing them by B<$ratio>.
 
-Returns: Duration as an integer.
+Returns: Duration number
 
 Argument:
 
-  $ratio - An integer divisor less than 1
+  $ratio - Divisor
 
   @dur_or_len - A list of MIDI::Simple style numeric duration specs
   (e.g. d48, or d60) or length specs (e.g. qn or dhn)
