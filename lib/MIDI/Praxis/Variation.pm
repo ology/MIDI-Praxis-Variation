@@ -76,7 +76,8 @@ our %EXPORT_TAGS = (all => [qw(
 
 Melodic variation techniques, as implemented here, expect MIDI::Simple
 style note names or durations as input. They return an array of MIDI
-note numbers or duration values.
+note numbers or duration values in ticks (where one quarter note = 96
+ticks).
 
 =head1 FUNCTIONS
 
@@ -114,13 +115,7 @@ sub note_name_to_number {
   @x = original(@array);
   @x = notes2nums(@array);
 
-Map note names to MIDI note numbers.
-
-Returns: An equivalent array of MIDI note numbers.
-
-Argument:
-
-  @array - An array of note names.
+Map a list of note names to MIDI note numbers.
 
 =cut
 
@@ -141,13 +136,7 @@ sub original {
 
   @x = retrograde(@array);
 
-Form the retrograde of an array of note names.
-
-Returns: The retrograde equivalent array as MIDI note numbers.
-
-Argument:
-
-  @array - An array of note names.
+Form the retrograde of an array of note names as MIDI note numbers.
 
 =cut
 
@@ -168,21 +157,15 @@ sub retrograde {
 
   @x = transposition($distance, @array);
 
-Form the transposition of an array of notes.
-
-Returns: MIDI note numbers equivalent by transposition from an array
-of note names OR MIDI note numbers.
+Form the transposition of an array of notes or MIDI note numbers.
 
 Arguments:
 
   $distance - An integer giving distance and direction.
   @array    - An array of note names OR MIDI note numbers.
 
-Expects to see an integer followed an array of MIDI::Simple
-style note names OR MIDI note numbers.  The integer specifies the
-direction and distance of transposition. For example, 8 indicates 8
-semitones up while -7 asks for 7 semitones down. The array argument
-specifies the notes to be transposed.
+For example, 8 indicates 8 semitones up while -7 asks for 7 semitones
+down.
 
 =cut
 
@@ -214,15 +197,13 @@ sub transposition {
 
 Form the inversion of an array of notes.
 
-Returns: MIDI note numbers equivalent by inversion to an array of note
-names.
-
 Arguments:
 
   $axis  - A note to use as the axis of this inversion.
+
   @array - An array of note names.
 
-Expects to see a MIDI::Simple style note name followed by an array of
+Expects to see a MIDI note name followed by an array of
 such names. These give the axis of inversion and the notes to be
 inverted.
 
@@ -251,10 +232,9 @@ sub inversion {
 
 Form the retrograde inversion of an array of notes.
 
-Returns: MIDI note numbers equivalent by retrograde inversion to an
-array of note names.
-
 Argument:
+
+  $axis  - A note to use as the axis of this inversion.
 
   @array - An array of note names.
 
@@ -282,16 +262,12 @@ sub retrograde_inversion {
 
   $x = dur($dur_or_len);
 
-Compute duration of a note.
-
-Returns: Duration as an integer.
+Compute duration of a note in MIDI ticks.
 
 Argument:
 
-  $dur_or_len - A string consisting of a MIDI::Simple style numeric
+  $dur_or_len - A string consisting of a MIDI tick numeric
   duration spec (e.g. d48, or d60) or length spec (e.g. qn or dhn)
-
-Note that string input is expected and integer output is returned.
 
 =cut
 
@@ -318,15 +294,13 @@ sub dur {
   $x = tye(@dur_or_len);
   $x = tie_durations(@dur_or_len);
 
-Compute the sum of the durations of notes. As with a tie in
-music notation. This odd spelling is used to avoid conflict with the
-perl reserved word tie.
-
-Returns: Duration as an integer.
+Compute the sum of the durations of notes, as with a tie in
+music notation. (The odd spelling is used to avoid conflict with the
+perl reserved word tie.)
 
 Argument:
 
-  @dur_or_len - A list of strings consisting of MIDI::Simple style
+  @dur_or_len - A list of strings consisting of MIDI tick
   numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
   or dhn)
 
@@ -355,13 +329,11 @@ sub tye {
 
 Augment duration of notes, multiplying them by B<$ratio>.
 
-Returns: Duration number
-
 Argument:
 
   $ratio - Multiplier
 
-  @dur_or_len - A list of MIDI::Simple style numeric duration specs
+  @dur_or_len - A list of MIDI tick numeric duration specs
   (e.g. d48, or d60) or length specs (e.g. qn or dhn)
 
 =cut
@@ -387,13 +359,11 @@ sub raugmentation {
 
 Diminish duration of notes, dividing them by B<$ratio>.
 
-Returns: Duration number
-
 Argument:
 
   $ratio - Divisor
 
-  @dur_or_len - A list of MIDI::Simple style numeric duration specs
+  @dur_or_len - A list of MIDI tick numeric duration specs
   (e.g. d48, or d60) or length specs (e.g. qn or dhn)
 
 =cut
@@ -423,7 +393,7 @@ Returns: Duration list.
 
 Argument:
 
-  @dur_or_len - A list of strings consisting of MIDI::Simple style
+  @dur_or_len - A list of strings consisting of MIDI tick
   numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
   or dhn)
 
@@ -456,7 +426,7 @@ Returns: Duration list.
 
 Argument:
 
-  @dur_or_len - A list of strings consisting of MIDI::Simple style
+  @dur_or_len - A list of strings consisting of MIDI tick
   numeric duration specs (e.g. d48, or d60) or length specs (e.g. qn
   or dhn)
 
@@ -486,20 +456,21 @@ sub diminution {
 
   @x = ntup($nelem, @subject);
 
-Catalog tuples of length B<$nelem> in B<@subject>.
-
-Returns: An array of tuples of length B<$nelem>.
+Catalog and return tuples of length B<$nelem> in B<@subject>.
 
 Argument:
 
   $nelem   - Number of elements in each tuple
+
   @subject - Subject array to be scanned for tuples
 
 Scan begins with the 0th element of B<@subject> looking for a tuple of
 length B<$nelem>. Scan advances by one until it has found all tuples
 of length B<$nelem>. For example: given the array C<@ar = qw(1 2 3 4)>
 and C<$nelem = 2>, then C<ntup(2, @ar)> would return
-C<qw(1 2 2 3 3 4)>. Note that if B<$nelem> equals -1, 0, or a value
+C<qw(1 2 2 3 3 4)>.
+
+Note that if B<$nelem> equals C<-1>, C<0>, or a value
 greater than the size of B<@subject>, this function will return C<()>;
 
 =cut
@@ -523,6 +494,8 @@ sub ntup {
 =head1 SEE ALSO
 
 The F<eg/*> and F<t/01-functions.t> files in this distribution
+
+L<Exporter>
 
 L<MIDI::Simple>
 
