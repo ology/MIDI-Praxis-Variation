@@ -237,7 +237,7 @@ Arguments:
 
   @array - An array of note names.
 
-Inverts about the supplied $axis.
+Inverts about the supplied axis.
 
 =cut
 
