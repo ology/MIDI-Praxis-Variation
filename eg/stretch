@@ -46,6 +46,7 @@ my @pool;
 my @weights;
 for my $spec (@{ $opts{pool} }) {
     my ($duration, $weight) = split /:/, $spec;
+    $weight ||= 1;
     push @pool, $duration;
     push @weights, $weight;
 }
