@@ -92,7 +92,8 @@ sub treble {
     my @scale = get_scale_MIDI($opts{note}, $opts{octave}, $opts{type});
 
     for my $n (0 .. $opts{max} - 1) {
-        my $note = @notes < $opts{phrases} ? $scale[int rand @scale] : $notes[int rand @notes];
+        my $note = @notes < $opts{phrases}
+            ? $scale[int rand @scale] : $notes[int rand @notes];
         push @notes, $note; # Accumulate the notes
 
         my $dura = $motif->[$n % @$motif];
