@@ -14,8 +14,8 @@ use Music::Scales;
 my %opts = (
     b_patch  => 35,             # Alternate: 42, etc.
     t_patch  => 4,              # Treble patch
-    t_max    => 64,             # Number of treble repetitions
-    t_octave => 4,              # Treble octave
+    max      => 64,             # Number of treble repetitions
+    octave   => 4,              # Treble octave
     phrases  => 16,             # Number of notes to accumulate
     size     => 4,              # Motif duration size in quarter notes
     bpm      => 120,            # Beats per minute
@@ -28,8 +28,8 @@ GetOptions(
     \%opts,
     'b_patch=i',
     't_patch=i',
-    't_max=i',
-    't_octave=i',
+    'max=i',
+    'octave=i',
     'phrases=i',
     'size=i',
     'bpm=i',
@@ -76,9 +76,9 @@ $score->write_score($opts{out});
 sub treble {
     MIDI::Util::set_chan_patch($score, 0, $opts{t_patch});
 
-    my @scale = get_scale_MIDI($opts{note}, $opts{t_octave}, $opts{type});
+    my @scale = get_scale_MIDI($opts{note}, $opts{octave}, $opts{type});
 
-    for my $n (0 .. $opts{t_max} - 1) {
+    for my $n (0 .. $opts{max} - 1) {
         my $note;
         if (@notes < $opts{phrases}) {
             $note = $scale[int rand @scale];
@@ -103,7 +103,7 @@ sub bass {
     my @transposed = transposition(-24, @notes);
     my @stretched  = augmentation(@$motif);
 
-    for my $n (0 .. $opts{t_max} / 2 - 1) {
+    for my $n (0 .. $opts{max} / 2 - 1) {
         $score->n($stretched[$n % @stretched], $transposed[$n % @transposed]);
     }
 }
