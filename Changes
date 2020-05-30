@@ -1,6 +1,8 @@
 Revision history for MIDI::Praxis::Variation
 
 {{$NEXT}}
+
+0.0602 2020-05-30 09:18:20
     - Improve eg/stretch.
     - Improve dist.ini.
 
