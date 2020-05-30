@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 
+use Getopt::Long;
 use Data::Dumper::Compact 'ddc';
 # Use local libraries
 use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw( MIDI-Praxis-Variation MIDI-Util Music-Duration-Partition );
@@ -10,28 +11,53 @@ use MIDI::Util;
 use Music::Duration::Partition;
 use Music::Scales;
 
-my $t_max   = shift || 64; # Number of treble repetitions
-my $bpm     = shift || 120; # Beats per minute
-my $t_patch = shift || 4; # Treble patch
-my $phrases = shift || 16; # Number of notes to accumulate
-my $type    = shift || 'pentatonic';
-my @pool    = @ARGV ? @ARGV : qw/ hn:1 qn:1 en:1 /;
+my %opts = (
+    b_patch  => 35,             # Alternate: 42, etc.
+    t_patch  => 4,              # Treble patch
+    t_max    => 64,             # Number of treble repetitions
+    t_octave => 4,              # Treble octave
+    phrases  => 16,             # Number of notes to accumulate
+    size     => 4,              # Motif duration size in quarter notes
+    bpm      => 120,            # Beats per minute
+    note     => 'C',            # C, C#, Db, D, D#, ...
+    type     => 'pentatonic',   # Alternate: pminor, etc.
+    out      => "$0.mid",       # MIDI output file
+    pool     => [],             # List of duration:weight specs
+);
+GetOptions(
+    \%opts,
+    'b_patch=i',
+    't_patch=i',
+    't_max=i',
+    't_octave=i',
+    'phrases=i',
+    'size=i',
+    'bpm=i',
+    'note=s',
+    'type=s',
+    'out=s',
+    'pool=s@',
+);
 
-my @weights = map { (split /:/, $_)[1] } @pool;
-@pool = map { (split /:/, $_)[0] } @pool;
+# Pool and weights for motif
+$opts{pool} = [qw/ hn:1 qn:1 en:1 /]
+    unless @{ $opts{pool} };
+my @pool;
+my @weights;
+for my $spec (@{ $opts{pool} }) {
+    my ($duration, $weight) = split /:/, $spec;
+    push @pool, $duration;
+    push @weights, $weight;
+}
 
-my $size     = 4; # Motif duration size in quarter notes
-my $t_octave = 4; # Treble octave
-my $b_patch  = 35; #42;
+# Rhythmic motif
+my $mdp = Music::Duration::Partition->new(size => $opts{size}, pool => \@pool, weights => \@weights);
+my $motif = $mdp->motif;
+print ddc $motif; # Show the generated motif
 
 my $sizes = { %MIDI::Simple::Length }; # Named durations used by the counter
 
-my $score = MIDI::Util::setup_score(bpm => $bpm);
-
-# Rhythmic motif used by treble and bass
-my $mdp = Music::Duration::Partition->new(size => $size, pool => \@pool, weights => \@weights);
-my $motif = $mdp->motif;
-print ddc $motif; # Show the generated motif
+my $score = MIDI::Util::setup_score(bpm => $opts{bpm});
 
 my @notes; # List of accumulated treble notes
 
@@ -43,18 +69,18 @@ $score->synch(
     \&bass,
 );
 
-$score->n('wn', 'C');
+$score->n('wn', $opts{note});
 
-$score->write_score("$0.mid");
+$score->write_score($opts{out});
 
 sub treble {
-    MIDI::Util::set_chan_patch($score, 0, $t_patch);
+    MIDI::Util::set_chan_patch($score, 0, $opts{t_patch});
 
-    my @scale = get_scale_MIDI('C', $t_octave, $type);
+    my @scale = get_scale_MIDI($opts{note}, $opts{t_octave}, $opts{type});
 
-    for my $n (0 .. $t_max - 1) {
+    for my $n (0 .. $opts{t_max} - 1) {
         my $note;
-        if (@notes < $phrases) {
+        if (@notes < $opts{phrases}) {
             $note = $scale[int rand @scale];
         }
         else {
@@ -71,13 +97,13 @@ sub treble {
 }
 
 sub bass {
-    MIDI::Util::set_chan_patch($score, 1, $b_patch);
+    MIDI::Util::set_chan_patch($score, 1, $opts{b_patch});
 
     # Lower the notes and stretch the rhythm
     my @transposed = transposition(-24, @notes);
     my @stretched  = augmentation(@$motif);
 
-    for my $n (0 .. $t_max / 2 - 1) {
+    for my $n (0 .. $opts{t_max} / 2 - 1) {
         $score->n($stretched[$n % @stretched], $transposed[$n % @transposed]);
     }
 }
