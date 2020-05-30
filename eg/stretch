@@ -15,7 +15,10 @@ my $bpm     = shift || 120; # Beats per minute
 my $t_patch = shift || 4; # Treble patch
 my $phrases = shift || 16; # Number of notes to accumulate
 my $type    = shift || 'pentatonic';
-my @pool    = @ARGV ? @ARGV : qw/ hn qn en /;
+my @pool    = @ARGV ? @ARGV : qw/ hn-1 qn-1 en-1 /;
+
+my @weights = map { (split /-/, $_)[1] } @pool;
+@pool = map { (split /-/, $_)[0] } @pool;
 
 my $size     = 4; # Motif duration size in quarter notes
 my $t_octave = 4; # Treble octave
@@ -26,7 +29,7 @@ my $sizes = { %MIDI::Simple::Length }; # Named durations used by the counter
 my $score = MIDI::Util::setup_score(bpm => $bpm);
 
 # Rhythmic motif used by treble and bass
-my $mdp = Music::Duration::Partition->new(size => $size, pool => \@pool);
+my $mdp = Music::Duration::Partition->new(size => $size, pool => \@pool, weights => \@weights);
 my $motif = $mdp->motif;
 print Dumper $motif; # Show the generated motif
 
