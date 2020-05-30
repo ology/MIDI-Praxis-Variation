@@ -4,8 +4,6 @@ use warnings;
 
 use Getopt::Long;
 use Data::Dumper::Compact 'ddc';
-# Use local libraries
-use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw( MIDI-Praxis-Variation MIDI-Util Music-Duration-Partition );
 use MIDI::Praxis::Variation qw(augmentation transposition);
 use MIDI::Util;
 use Music::Duration::Partition;
