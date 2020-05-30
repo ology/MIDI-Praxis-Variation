@@ -6,6 +6,9 @@
 # perl stretch --max 32 --phrases 8 --out 'foo.mid'
 # perl stretch --max 128 --pool sn:5 --pool ten:8 --pool tsn:10
 
+# ^ --pool is a duration:weight spec where the duration is a MIDI::Simple
+# ^ length or duration name. The relative weight is an arbitrary number.
+
 use strict;
 use warnings;
 
