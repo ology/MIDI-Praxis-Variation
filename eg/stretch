@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Data::Dumper;
+use Data::Dumper::Compact 'ddc';
 # Use local libraries
 use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw( MIDI-Praxis-Variation MIDI-Util Music-Duration-Partition );
 use MIDI::Praxis::Variation qw(augmentation transposition);
@@ -31,7 +31,7 @@ my $score = MIDI::Util::setup_score(bpm => $bpm);
 # Rhythmic motif used by treble and bass
 my $mdp = Music::Duration::Partition->new(size => $size, pool => \@pool, weights => \@weights);
 my $motif = $mdp->motif;
-print Dumper $motif; # Show the generated motif
+print ddc $motif; # Show the generated motif
 
 my @notes; # List of accumulated treble notes
 
