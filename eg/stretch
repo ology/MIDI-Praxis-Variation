@@ -1,4 +1,11 @@
 #!/usr/bin/env perl
+
+# Examples:
+# perl stretch # Use defaults and create stretch.mid
+# perl stretch --note A --type pminor # Use the A pentatonic minor scale
+# perl stretch --max 32 --phrases 8 --out 'foo.mid'
+# perl stretch --max 128 --pool sn:5 --pool tsn:10
+
 use strict;
 use warnings;
 
