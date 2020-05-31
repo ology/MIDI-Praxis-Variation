@@ -19,25 +19,36 @@ my $type    = 'pentatonic';   # Alternate: pminor, etc.
 my $out     = "$0.mid";       # MIDI output file
 my $pool    = [qw/ hn qn en /];
 
+# Generate a rhythmic motif
 my $mdp = Music::Duration::Partition->new(size => $size, pool => $pool);
 my $motif = $mdp->motif;
 print $depth, '. ', ddc $motif; # Show the generated motif
 
+# Get a MIDI score
 my $score = MIDI::Util::setup_score(bpm => $bpm, patch => $t_patch);
 
+# Get a scale of MIDI note numbers
 my @scale = get_scale_MIDI($note, $octave, $type);
 
+# While we are at depth...
 while ($depth) {
+    # Play 2 runs through the motif with random scale notes
     for my $i (0 .. $size * 2 - 2) {
         $score->n($motif->[$i % @$motif], $scale[int rand @scale]);
     }
 
+    # Rest so the phrases don't run together
     $score->r('hn');
 
+    # Diminish the motif
     $motif = [ diminution(@$motif) ];
 
+    # Decrement the depth
     $depth--;
+
+    # Show the motif if we are going to play it
     print $depth, '. ', ddc($motif) if $depth;
 }
 
+# Write out our MIDI file
 $score->write_score($out);
