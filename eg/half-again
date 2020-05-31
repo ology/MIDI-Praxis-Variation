@@ -34,9 +34,9 @@ while ($depth) {
 
     $score->r('hn');
 
-    $depth--;
-
     $motif = [ diminution(@$motif) ];
+
+    $depth--;
     print $depth, '. ', ddc($motif) if $depth;
 }
 
