@@ -52,6 +52,9 @@ our %EXPORT_TAGS = (all => [qw(
 
   use MIDI::Praxis::Variation ':all';
 
+  # Or import individually by function name:
+  # use MIDI::Praxis::Variation qw(augmentation diminution etc);
+
   my @notes = qw(C5 E5 G5);
   my @dura = qw(qn qn);
 
