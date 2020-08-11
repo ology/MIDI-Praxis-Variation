@@ -57,20 +57,20 @@ our %EXPORT_TAGS = (all => [qw(
 
   my @x = augmentation(@dura);
   @x = diminution(@dura);
-  my $x = dur('qn');
+  my $y = dur('qn');
   @x = inversion('B4', @notes);
-  $x = note_name_to_number('C5');
-  $x = note2num('C5'); # Alias for note_name_to_number()
+  $y = note_name_to_number('C5');
+  $y = note2num('C5'); # Alias for note_name_to_number()
   @x = ntup(2, @notes);
   @x = original(@notes);
   @x = notes2nums(@notes); # Alias for original()
-  $x = raugmentation(1.5, @dura);
-  $x = rdiminution(1.5, @dura);
+  $y = raugmentation(1.5, @dura);
+  $y = rdiminution(1.5, @dura);
   @x = retrograde(@notes);
   @x = retrograde_inversion('B4', @notes);
   @x = transposition(-12, @notes); # Transpose an octave down
-  $x = tye(@dura);
-  $x = tie_durations(@dura); # Alias for tye()
+  $y = tye(@dura);
+  $y = tie_durations(@dura); # Alias for tye()
 
 =head1 DESCRIPTION
 
