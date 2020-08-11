@@ -68,7 +68,7 @@ our %EXPORT_TAGS = (all => [qw(
   $x = rdiminution(1.5, @dura);
   @x = retrograde(@notes);
   @x = retrograde_inversion('B4', @notes);
-  @x = transposition($delta, @notes);
+  @x = transposition(-12, @notes); # Transpose an octave down
   $x = tye(@dura);
   $x = tie_durations(@dura); # Alias for tye()
 
