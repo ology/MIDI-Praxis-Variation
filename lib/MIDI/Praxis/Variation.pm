@@ -5,9 +5,9 @@ package MIDI::Praxis::Variation;
 use strict;
 use warnings;
 
-our $VERSION = '0.0605';
+our $VERSION = '0.0606';
 
-use MIDI::Simple;
+use MIDI::Simple ();
 
 use Exporter 'import';
 
