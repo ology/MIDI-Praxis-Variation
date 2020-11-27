@@ -12,12 +12,12 @@ use Music::Scales;
 my $depth   = 5;              # Recusive "by half" depth
 my $t_patch = 4;              # Treble patch
 my $octave  = 4;              # Treble octave
-my $size    = 4;              # Motif duration size in quarter notes
+my $size    = 8;              # Motif duration size in quarter notes
 my $bpm     = 100;            # Beats per minute
 my $note    = 'C';            # C, C#, Db, D, D#, ...
 my $type    = 'pentatonic';   # Alternate: pminor, etc.
 my $out     = "$0.mid";       # MIDI output file
-my $pool    = [qw/ hn qn en /];
+my $pool    = [qw/ hn dhn qn en /];
 
 # Generate a rhythmic motif
 my $mdp = Music::Duration::Partition->new(size => $size, pool => $pool);
