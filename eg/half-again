@@ -32,8 +32,8 @@ my @scale = get_scale_MIDI($note, $octave, $type);
 
 # While we are at depth...
 while ($depth) {
-    # Play 2 runs through the motif with random scale notes
-    for my $i (0 .. $size * 2 - 2) {
+    # Play the motif with random scale notes
+    for my $i (0 .. $#$motif) {
         $score->n($motif->[$i % @$motif], $scale[int rand @scale]);
     }
 
