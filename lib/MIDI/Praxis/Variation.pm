@@ -219,6 +219,7 @@ sub inversion {
 
     my @transposed = transposition($delta, @notes);
 
+    # XXX WTF?
     my @ret = map { 2 * $center - $_ } @transposed;
 
     return @ret;
