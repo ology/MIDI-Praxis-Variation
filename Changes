@@ -1,6 +1,7 @@
 Revision history for MIDI::Praxis::Variation
 
 {{$NEXT}}
+    - Update the eg/ programs.
 
 0.0606 2020-11-26 11:36:29
     - Don't import anything from MIDI::Simple.
