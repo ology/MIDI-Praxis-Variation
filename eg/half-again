@@ -3,9 +3,9 @@ use strict;
 use warnings;
 
 use Data::Dumper::Compact 'ddc';
-use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw( MIDI-Praxis-Variation MIDI-Util Music-Duration-Partition );
+use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw( MIDI-Praxis-Variation MIDI-Util Music-Duration Music-Duration-Partition );
 use MIDI::Praxis::Variation qw(diminution);
-use MIDI::Util;
+use MIDI::Util qw(setup_score);
 use Music::Duration::Partition;
 use Music::Scales;
 
@@ -25,7 +25,7 @@ my $motif = $mdp->motif;
 print $depth, '. ', ddc $motif; # Show the generated motif
 
 # Get a MIDI score
-my $score = MIDI::Util::setup_score(bpm => $bpm, patch => $t_patch);
+my $score = setup_score(bpm => $bpm, patch => $t_patch);
 
 # Get a scale of MIDI note numbers
 my @scale = get_scale_MIDI($note, $octave, $type);
