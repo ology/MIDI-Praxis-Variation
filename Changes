@@ -1,6 +1,8 @@
 Revision history for MIDI::Praxis::Variation
 
 {{$NEXT}}
+
+0.0607 2022-02-08 16:47:43
     - Update the eg/ programs.
     - Fixed copyright, to ensure that my inept excisions and insertions
       are disambiguated from those of the original author.
