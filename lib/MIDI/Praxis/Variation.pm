@@ -496,7 +496,7 @@ L<MIDI::Simple>
 
 =head1 MAINTAINER
 
-Gene Boggs <gene@cpan.org>
+Gene Boggs <gene.boggs@gmail.com>
 
 =cut
 
